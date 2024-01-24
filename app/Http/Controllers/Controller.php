@@ -10,7 +10,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
-    protected function file_upload($file,$folder){
+    protected function file_upload($folder,$file){
         $product_file=$file;
         $file_extension=$product_file->getClientOriginalExtension();
         $file_image_name=rand().time().'.'.$file_extension;

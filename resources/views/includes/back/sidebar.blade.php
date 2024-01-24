@@ -58,7 +58,13 @@
                 <li>
                     <a href="#single_pages" class="iq-waves-effect collapsed"  data-toggle="collapse" aria-expanded="false"><i class="fa-brands fa-pagelines"></i></i><span>Home Pages</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                     <ul id="single_pages" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                        <li><a href="{{ route('form.show') }}"><i class="fa-solid fa-section"></i>hero section</a></li>
+                        <li><a href="{{ route('hero.form.show') }}"><i class="fa-solid fa-section"></i>hero section</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#single_pages_title" class="iq-waves-effect collapsed"  data-toggle="collapse" aria-expanded="false"><i class="fa-brands fa-pagelines"></i></i><span>Single Page Common Title</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                    <ul id="single_pages_title" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                        <li><a href="{{ route('singlepage.title.form.show') }}"><i class="fa-solid fa-section"></i>Section Title</a></li>
                     </ul>
                 </li>
                 <li>

@@ -9,17 +9,33 @@ use App\Http\Requests\HeroSectionRequest;
 
 class HomePagesSectionController extends Controller
 {
-    public function formShow(){
+    public function HeroformShow(){
         $breadcrumb = ['Dashboard' => route('admin.dashboard'),'Create'=>''];
         setThisPageTitle('Create');
         $heroSection=frontendSection::where('section_name','hero_section')->first();
         return view('backend.single-pages.hero-section.form',compact('breadcrumb','heroSection'));
     }
     public function updateOrCreate(HeroSectionRequest $request){
-        if($request->hasFile('hero_image')){
-            $image=$this->file_upload($request->file('hero_image'),'Backend/images/homepages/hero_image');
+        if($request->hero_image !=null){
+            if($request->hasFile('hero_image') !=null){
+                $image=$this->file_update($request->file('hero_image'),'Backend/images/homepages/hero_image',$request->hero_image_old);
+            }else{
+                $image=$request->hero_image_old;
+            }
+        }else{
+            if($request->hasFile('hero_image')){
+                $image=$this->file_upload('Backend/images/homepages/hero_image',$request->file('hero_image'));
+            }
         }
-
+        
+        $social_share=[];
+        foreach($request->social_share as $value){
+            $social_share[]=[
+                'socail_icon'   => $value['socail_icon'],
+                'socail_url'    => $value['socail_url'],
+                'socail_target' => $value['socail_target'],
+            ];
+        };
         $data=[
             'hello_text'         => $request->hello_text,
             'title'              => $request->title,
@@ -30,6 +46,7 @@ class HomePagesSectionController extends Controller
             'cv_button_target'   => $request->cv_button_target,
             'cv_button_url'      => $request->cv_button_url,
             'cv_button_text'     => $request->cv_button_text,
+            'social_share'       => json_encode($social_share),
             'hero_image'         => $image,
 
         ];
