@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class HeroSectionRequest extends FormRequest
+class testmonialRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,11 +22,11 @@ class HeroSectionRequest extends FormRequest
     public function rules(): array
     {
         $rules= [
-            'hello_text'  => ['required'],
-            'title'       => ['required'],
-            'designation' => ['required','max:30'],
-            'status'      => ['required'],
-            'image'  => 'required|mimes:png,jpg,jpeg|file'
+            'testmonial_name' => ['required'],
+            'designation'     => ['required'],
+            'description'     => ['required'],
+            'status'          => ['required'],
+            'image'           => 'required|mimes:png,jpg,jpeg|file',
         ];
         if(request()->image !=null){
             $rules['image']='required';

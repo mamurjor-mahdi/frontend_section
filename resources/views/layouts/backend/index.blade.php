@@ -9,6 +9,7 @@
       <link rel="shortcut icon" href="{{ asset('backend') }}/images/favicon.ico" />
 
       <!-- datatable cdn -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
       <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
       <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap4.min.css">
@@ -121,6 +122,13 @@
       <script>
          var _token = "{{ csrf_token() }}";
       </script>
+      <script>
+         $(document).ready(function() {
+             $('#description_note*').summernote({
+                 height:200
+             });
+         });
+     </script>
       @stack('scripts')
    </body>
 </html>

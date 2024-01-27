@@ -1,4 +1,4 @@
-@push('script')
+@push('scripts')
     @if (session()->get('success'))
     <script>
         toastr.options = {

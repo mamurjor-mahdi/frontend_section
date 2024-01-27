@@ -58,13 +58,18 @@
                 <li>
                     <a href="#single_pages" class="iq-waves-effect collapsed"  data-toggle="collapse" aria-expanded="false"><i class="fa-brands fa-pagelines"></i></i><span>Home Pages</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                     <ul id="single_pages" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                        <li><a href="{{ route('hero.form.show') }}"><i class="fa-solid fa-section"></i>hero section</a></li>
+                        <li><a href="{{ route('admin.hero.form.show') }}"><i class="fa-solid fa-section"></i>hero section</a></li>
+                        <li><a href="{{ route('admin.counter.index') }}"><i class="fa-solid fa-section"></i>Counter Section</a></li>
+                        <li><a href="{{ route('admin.about.form.show') }}"><i class="fa-solid fa-section"></i>About Section</a></li>
+                        <li><a href="{{ route('admin.service.index') }}"><i class="fa-solid fa-section"></i>Service Section</a></li>
+                        <li><a href="{{ route('admin.choose.index') }}"><i class="fa-solid fa-section"></i>Choose Section</a></li>
+                        <li><a href="{{ route('admin.testmonial.index') }}"><i class="fa-solid fa-section"></i>Testmonial Section</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="#single_pages_title" class="iq-waves-effect collapsed"  data-toggle="collapse" aria-expanded="false"><i class="fa-brands fa-pagelines"></i></i><span>Single Page Common Title</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                     <ul id="single_pages_title" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                        <li><a href="{{ route('singlepage.title.form.show') }}"><i class="fa-solid fa-section"></i>Section Title</a></li>
+                        <li><a href="{{ route('admin.pagtitle.form.show') }}"><i class="fa-solid fa-section"></i>Section Title</a></li>
                     </ul>
                 </li>
                 <li>

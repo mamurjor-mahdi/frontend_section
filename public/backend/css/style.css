@@ -246,7 +246,7 @@ a:hover { text-decoration: none; }
 .iq-sidebar-menu { position: relative; }
 .iq-sidebar-menu .iq-menu { margin: 0 15px 0 0; padding: 0; list-style-type: none;  text-transform: capitalize; }
 .iq-sidebar-menu .iq-menu li { list-style-type: none; position: relative; white-space: nowrap; }
-.iq-sidebar-menu .iq-menu li a { font-size: 14px; white-space: nowrap; display: block; color: var(--iq-icon-color); position: relative; padding: 15px 20px; line-height: 18px; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; overflow: hidden; border-radius: 0 8px 8px 0; }
+.iq-sidebar-menu .iq-menu li a { font-size: 14px; white-space: nowrap; display: block; color: var(--iq-icon-color); position: relative; padding: 15px 20px; line-height: 18px; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; overflow: hidden; border-radius: 0 8px 8px 0; text-decoration: none; }
 .iq-sidebar-menu .iq-menu li li a { font-size: 14px; }
 .iq-sidebar-menu .iq-menu li a i { font-size: 20px; margin-right: 10px; vertical-align: middle; width: 20px; display: inline-block; float: left; }
 .iq-sidebar-menu .iq-menu li li a i { font-size: 16px; }
