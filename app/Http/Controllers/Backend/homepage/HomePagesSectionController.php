@@ -273,14 +273,6 @@ class HomePagesSectionController extends Controller
         return redirect()->back()->with('success','Delete successfully');
     }
 
-
-
-
-
-
-
-
-    
     //Testmonial=-------------->
     public function testmonialIndex(){
         $breadcrumb = ['Dashboard' => route('admin.dashboard'),'Table'=>''];
@@ -346,4 +338,65 @@ class HomePagesSectionController extends Controller
         return redirect()->back()->with('success','Delete successfully');
     }
 
+    //portfolio=-------------->
+    public function portfolioIndex(){
+        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'Table'=>''];
+        setThisPageTitle('table');
+        $portfolio=frontendSection::where('section_name','portfolio_section')->get();
+        return view('backend.single-pages.portfolio-section.index',compact('breadcrumb','portfolio'));
+    }
+    public function portfolioCreate(){
+        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'index'=>route('admin.portfolio.index'),'Create'=>''];
+        setThisPageTitle('Create');
+        $portfolio=frontendSection::where('section_name','portfolio_section')->get();
+        return view('backend.single-pages.portfolio-section.form',compact('breadcrumb','portfolio'));
+    }
+    public function portfolioStore(Request $request){
+        if($request->hasFile('image')){
+            $image=$this->file_upload('Backend/images/homepages/portfolio_image',$request->image);
+        }; 
+        
+        $data=[
+            'title'    => $request->title,
+            'site_url' => $request->site_url,
+            'image'    => $image,
+        ];
+        frontendSection::create([
+            'section_name' => 'portfolio_section',
+            'data'         => json_encode($data),
+            'status'       => $request->status
+        ]);
+        return redirect(route('admin.portfolio.index'))->with('success','Create Successfully');
+    }
+    public function portfolioEdit($id){
+        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'index'=>route('admin.portfolio.index'),'edit'=>'' ];
+        setThisPageTitle('edit');
+        $portfolios=frontendSection::find($id);
+        return view('backend.single-pages.portfolio-section.form',compact('breadcrumb','portfolios'));
+    }
+    public function portfolioUpdate(Request $request,$id){
+        $portfolios=frontendSection::find($id);
+        if($request->hasFile('image')){
+            $image=$this->file_update($request->image,'Backend/images/homepages/portfolio_image/',$portfolios->image_old);
+        }else{
+            $image=$request->image_old;
+        };
+        $data=[
+            'title'    => $request->title,
+            'site_url' => $request->site_url,
+            'image'    => $image,
+        ];
+        $portfolios->update([
+            'section_name' => 'portfolio_section',
+            'data'         => json_encode($data),
+            'status'       => $request->status
+        ]);
+        return redirect(route('admin.portfolio.index'))->with('success','Create Successfully');
+    }
+    public function portfolioDelete($id){
+        $portfolios=frontendSection::find($id);
+        $this->file_remove('Backend/images/homepages/portfolio_image/',$portfolios->image_old);
+        $portfolios->delete();
+        return redirect()->back()->with('success','Delete successfully');
+    }
 }

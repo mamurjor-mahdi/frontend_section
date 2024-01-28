@@ -7,6 +7,7 @@
     <meta name="author" content="Devcrud">
     <title>Steller Landing page | Free Bootstrap 4.1 landing page</title>
     <!-- font icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
     <link rel="stylesheet" href="{{ asset('/') }}assets/vendors/themify-icons/css/themify-icons.css">
     <!-- Bootstrap + Steller main styles -->
 	<link rel="stylesheet" href="{{ asset('/') }}assets/css/steller.css">
@@ -66,9 +67,9 @@
     <script src="{{ asset('/') }}assets/vendors/bootstrap/bootstrap.bundle.js"></script>
     <!-- bootstrap 3 affix -->
 	<script src="{{ asset('/') }}assets/vendors/bootstrap/bootstrap.affix.js"></script>
-
     <!-- steller js -->
     <script src="{{ asset('/') }}assets/js/steller.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
     <script>
         $(document).ready(function() {
         var counters = $(".count");
@@ -95,5 +96,14 @@
         });
 
     </script>
+    <script>
+        // Initialize Lightbox2
+        lightbox.option({
+            'resizeDuration': 200,
+            'wrapAround': true
+        });
+    </script>
+    
+    
 </body>
 </html>

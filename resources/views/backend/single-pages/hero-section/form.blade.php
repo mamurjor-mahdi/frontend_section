@@ -27,8 +27,11 @@
                     @php
                         if ($heroSection !=null){
                             $data=json_decode($heroSection->data);
+                            $social_share=json_decode($data->social_share);
+                            // dd($social_share);
                         }
                     @endphp
+                    
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -128,31 +131,32 @@
                                 </div>
                             </div>
                             @isset($heroSection)
-                                <img style="width: 60px; height:50px" src="{{ asset('Backend/images/homepages/hero_image/'.$data->hero_image) }}" alt="">
+                                <img style="width: 6px; height:5px" src="{{ asset('Backend/images/homepages/hero_image/'.$data->hero_image) }}" alt="">
                                 <input hidden name="image_old" id="image_old" class="form-control" value="{{ $data->hero_image }}">
                             @endisset
                         </div>
                         {{-- admore filed start --}}
+                       
                         <div class="col-md-12">
                             <div id="row_items">
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="form-lebel">Social Icon</label>
-                                            <input type="text" class="form-control" id="socail_icon" name="social_share[0][social_icon]" value="" placeholder="socail icon">
+                                            <input type="text" class="form-control" id="socail_icon" name="social_share[][social_icon]" value="" placeholder="socail icon">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="form-lebel">Social Url</label>
-                                            <input type="text" class="form-control" id="socail_url" name="social_share[0][socail_url]" value="" placeholder="socail url">
+                                            <input type="text" class="form-control" id="socail_url" name="social_share[][socail_url]" value="" placeholder="socail url">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                         <div class="input-group">
                                             <label for="form-lebel">Social Target</label>
-                                            <select class="form-control" id="socail_target" name="social_share[0][socail_target]">
+                                            <select class="form-control" id="socail_target" name="social_share[][socail_target]">
                                                 <option value="">Select Target</option>
                                                 <option value="_blank">New Tab</option>
                                                 <option value="_self">Current Tab</option>
@@ -201,8 +205,8 @@
     </div>
 @endsection
 @push('scripts')
-<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.1.2.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3./js/bootstrap.min.js"></script>
 <script type="text/javascript">
     window.alert = function(){};
     var defaultCSS = document.getElementById('bootstrap-css');
@@ -224,20 +228,20 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="form-lebel">Social Icon</label>
-                                            <input type="text" class="form-control" id="socail_icon" name="social_share[0][social_icon]" value="" placeholder="socail icon">
+                                            <input type="text" class="form-control" id="socail_icon" name="social_share[][social_icon]" value="" placeholder="socail icon">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="form-lebel">Social Url</label>
-                                            <input type="text" class="form-control" id="socail_url" name="social_share[0][socail_url]" value="" placeholder="socail url">
+                                            <input type="text" class="form-control" id="socail_url" name="social_share[][socail_url]" value="" placeholder="socail url">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                         <div class="input-group">
                                             <label for="form-lebel">Social Target</label>
-                                            <select class="form-control" id="socail_target" name="social_share[0][socail_target]">
+                                            <select class="form-control" id="socail_target" name="social_share[][socail_target]">
                                                 <option value="">Select Target</option>
                                                 <option value="_blank">New Tab</option>
                                                 <option value="_self">Current Tab</option>

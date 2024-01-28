@@ -11644,3 +11644,8 @@ pre {
 .section.bg-gray {
   background: white;
 }
+/*========= this css light box image =======*/
+.img-wrapper img {
+	width: 100%;
+	height: 300px;
+}

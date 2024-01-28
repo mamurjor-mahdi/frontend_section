@@ -4,73 +4,94 @@
         <h6 class="section-title mb-4">Check My Wonderful Works</h6>
         <p class="mb-5 pb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. In alias dignissimos. <br> rerum commodi corrupti, temporibus non quam.</p>
 
+
         <div class="row">
             <div class="col-sm-4">
-                <div class="img-wrapper">
-                    <img src="{{ asset('/') }}assets/imgs/folio-1.jpg" alt="">
-                    <div class="overlay">
-                        <div class="overlay-infos">
-                            <h5>Project Title</h5>
-                            <a href="javascript:void(0)"><i class="ti-zoom-in"></i></a>
-                            <a href="javascript:void(0)"><i class="ti-link"></i></a>
-                        </div>
+                    <div class="img-wrapper">
+                        <a href="javascript:void(0)">
+                            <img src="{{ asset('/') }}assets/imgs/folio-1.jpg" alt="">
+                        </a>
+                        <div class="overlay">
+                            <div class="overlay-infos">
+                                <h5>Project Title</h5>
+                                <a href="{{ asset('/') }}assets/imgs/folio-1.jpg" data-lightbox="projects"><i class="ti-zoom-in"></i></a>
+                                <a href="javascript:void(0)"><i class="ti-link"></i></a>
+                            </div>
+                         </div>
                     </div>
-                </div>
-                <div class="img-wrapper">
-                    <img src="{{ asset('/') }}assets/imgs/folio-2.jpg" alt="">
-                    <div class="overlay">
-                        <div class="overlay-infos">
-                            <h5>Project Title</h5>
-                            <a href="javascript:void(0)"><i class="ti-zoom-in"></i></a>
-                            <a href="javascript:void(0)"><i class="ti-link"></i></a>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="col-sm-4">
-                <div class="img-wrapper">
-                    <img src="{{ asset('/') }}assets/imgs/folio-3.jpg" alt="">
-                    <div class="overlay">
-                        <div class="overlay-infos">
-                            <h5>Project Title</h5>
-                            <a href="javascript:void(0)"><i class="ti-zoom-in"></i></a>
-                            <a href="javascript:void(0)"><i class="ti-link"></i></a>
-                        </div>
+                    <div class="img-wrapper">
+                        <a href="javascript:void(0)">
+                            <img src="{{ asset('/') }}assets/imgs/folio-2.jpg" alt="">
+                        </a>
+                        <div class="overlay">
+                            <div class="overlay-infos">
+                                <h5>Project Title</h5>
+                                <a href="{{ asset('/') }}assets/imgs/folio-2.jpg" data-lightbox="projects"><i class="ti-zoom-in"></i></a>
+                                <a href="javascript:void(0)"><i class="ti-link"></i></a>
+                            </div>
+                         </div>
                     </div>
-                </div>
-                <div class="img-wrapper">
-                    <img src="{{ asset('/') }}assets/imgs/folio-4.jpg" alt="">
-                    <div class="overlay">
-                        <div class="overlay-infos">
-                            <h5>Project Title</h5>
-                            <a href="javascript:void(0)"><i class="ti-zoom-in"></i></a>
-                            <a href="javascript:void(0)"><i class="ti-link"></i></a>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="col-sm-4">
-                <div class="img-wrapper">
-                    <img src="{{ asset('/') }}assets/imgs/folio-5.jpg" alt="">
-                    <div class="overlay">
-                        <div class="overlay-infos">
-                            <h5>Project Title</h5>
-                            <a href="javascript:void(0)"><i class="ti-zoom-in"></i></a>
-                            <a href="javascript:void(0)"><i class="ti-link"></i></a>
-                        </div>
+                    <div class="img-wrapper">
+                        <a href="javascript:void(0)">
+                            <img src="{{ asset('/') }}assets/imgs/folio-3.jpg" alt="">
+                        </a>
+                        <div class="overlay">
+                            <div class="overlay-infos">
+                                <h5>Project Title</h5>
+                                <a href="{{ asset('/') }}assets/imgs/folio-3.jpg" data-lightbox="projects"><i class="ti-zoom-in"></i></a>
+                                <a href="javascript:void(0)"><i class="ti-link"></i></a>
+                            </div>
+                         </div>
                     </div>
-                </div>
-                <div class="img-wrapper">
-                    <img src="{{ asset('/') }}assets/imgs/folio-6.jpg" alt="">
-                    <div class="overlay">
-                        <div class="overlay-infos">
-                            <h5>Project Title</h5>
-                            <a href="javascript:void(0)"><i class="ti-zoom-in"></i></a>
-                            <a href="javascript:void(0)"><i class="ti-link"></i></a>
-                        </div>
-                    </div>
-                </div>
             </div>
+            <div class="col-sm-4">
+                    <div class="img-wrapper">
+                        <a href="javascript:void(0)">
+                            <img src="{{ asset('/') }}assets/imgs/folio-4.jpg" alt="">
+                        </a>
+                        <div class="overlay">
+                            <div class="overlay-infos">
+                                <h5>Project Title</h5>
+                                <a href="{{ asset('/') }}assets/imgs/folio-4.jpg" data-lightbox="projects"><i class="ti-zoom-in"></i></a>
+                                <a href="javascript:void(0)"><i class="ti-link"></i></a>
+                            </div>
+                         </div>
+                    </div>
+            </div>
+            <div class="col-sm-4">
+                    <div class="img-wrapper">
+                        <a href="javascript:void(0)">
+                            <img src="{{ asset('/') }}assets/imgs/folio-5.jpg" alt="">
+                        </a>
+                        <div class="overlay">
+                            <div class="overlay-infos">
+                                <h5>Project Title</h5>
+                                <a href="{{ asset('/') }}assets/imgs/folio-5.jpg" data-lightbox="projects"><i class="ti-zoom-in"></i></a>
+                                <a href="javascript:void(0)"><i class="ti-link"></i></a>
+                            </div>
+                         </div>
+                    </div>
+            </div>
+            <div class="col-sm-4">
+                    <div class="img-wrapper">
+                        <a href="javascript:void(0)">
+                            <img src="{{ asset('/') }}assets/imgs/folio-6.jpg" alt="">
+                        </a>
+                        <div class="overlay">
+                            <div class="overlay-infos">
+                                <h5>Project Title</h5>
+                                <a href="{{ asset('/') }}assets/imgs/folio-6.jpg" data-lightbox="projects"><i class="ti-zoom-in"></i></a>
+                                <a href="javascript:void(0)"><i class="ti-link"></i></a>
+                            </div>
+                         </div>
+                    </div>
+            </div>
+            
+            
         </div>
 
     </div>

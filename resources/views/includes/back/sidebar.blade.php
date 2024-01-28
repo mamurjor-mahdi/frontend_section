@@ -64,6 +64,7 @@
                         <li><a href="{{ route('admin.service.index') }}"><i class="fa-solid fa-section"></i>Service Section</a></li>
                         <li><a href="{{ route('admin.choose.index') }}"><i class="fa-solid fa-section"></i>Choose Section</a></li>
                         <li><a href="{{ route('admin.testmonial.index') }}"><i class="fa-solid fa-section"></i>Testmonial Section</a></li>
+                        <li><a href="{{ route('admin.portfolio.index') }}"><i class="fa-solid fa-section"></i>Portfolio Section</a></li>
                     </ul>
                 </li>
                 <li>

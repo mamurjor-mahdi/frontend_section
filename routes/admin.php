@@ -76,3 +76,12 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::patch('/testmonial/update/{id}', [HomePagesSectionController::class, 'testmonialUpdate'])->name('testmonial.update');
     Route::delete('/testmonial/delete/{id}', [HomePagesSectionController::class, 'testmonialDelete'])->name('testmonial.delete');
 });
+//backend portfolio pages route
+Route::prefix('admin')->name('admin.')->group(function(){
+    Route::get('/portfolio/index', [HomePagesSectionController::class, 'portfolioIndex'])->name('portfolio.index');
+    Route::get('/portfolio/create', [HomePagesSectionController::class, 'portfolioCreate'])->name('portfolio.create');
+    Route::post('/portfolio/store', [HomePagesSectionController::class, 'portfolioStore'])->name('portfolio.store');
+    Route::get('/portfolio/edit/{id}', [HomePagesSectionController::class, 'portfolioEdit'])->name('portfolio.edit');
+    Route::patch('/portfolio/update/{id}', [HomePagesSectionController::class, 'portfolioUpdate'])->name('portfolio.update');
+    Route::delete('/portfolio/delete/{id}', [HomePagesSectionController::class, 'portfolioDelete'])->name('portfolio.delete');
+});
