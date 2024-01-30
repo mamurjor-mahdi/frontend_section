@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\portfolioRequest;
 use App\Http\Requests\testmonialRequest;
 use App\Http\Requests\HeroSectionRequest;
+use App\Models\Category;
 
 class HomePagesSectionController extends Controller
 {
@@ -398,6 +399,76 @@ class HomePagesSectionController extends Controller
         $portfolios=frontendSection::find($id);
         $this->file_remove('Backend/images/homepages/portfolio_image/',$portfolios->image_old);
         $portfolios->delete();
+        return redirect()->back()->with('success','Delete successfully');
+    }
+    //Blogs=-------------->
+    public function blogIndex(){
+        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'Table'=>''];
+        setThisPageTitle('table');
+        $blog=frontendSection::with('category')->where('section_name','blog_section')->get();
+        return view('backend.single-pages.blog-section.index',compact('breadcrumb','blog'));
+    }
+    public function blogCreate(){
+        $categories=Category::all();
+        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'index'=>route('admin.blog.index'),'Create'=>''];
+        setThisPageTitle('Create');
+        $blog=frontendSection::where('section_name','blog_section')->get();
+        return view('backend.single-pages.blog-section.form',compact('breadcrumb','blog','category'));
+    }
+    public function blogStore(Request $request){
+        if($request->hasFile('image')){
+            $image=$this->file_upload('Backend/images/homepages/blog_image',$request->image);
+        };
+
+        $data=[
+            'category'      => $request->category,
+            'title'         => $request->title,
+            'description'   => $request->description,
+            'button_url'    => $request->button_url,
+            'button_text'   => $request->button_text,
+            'button_target' => $request->button_target,
+            'image'         => $image,
+        ];
+        frontendSection::create([
+            'section_name' => 'blog_section',
+            'data'         => json_encode($data),
+            'status'       => $request->status
+        ]);
+        return redirect(route('admin.blog.index'))->with('success','Create Successfully');
+    }
+    public function blogEdit($id){
+        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'index'=>route('admin.blog.index'),'edit'=>'' ];
+        setThisPageTitle('edit');
+        $blogs=frontendSection::find($id);
+        return view('backend.single-pages.blog-section.form',compact('breadcrumb','blogs'));
+    }
+    public function blogUpdate(Request $request,$id){
+        $blogs=frontendSection::find($id);
+        if($request->hasFile('image')){
+            $image=$this->file_update($request->image,'Backend/images/homepages/blog_image/',$blogs->image_old);
+        }else{
+            $image=$request->image_old;
+        };
+        $data=[
+            'category'      => $request->category,
+            'title'         => $request->title,
+            'description'   => $request->description,
+            'button_url'    => $request->button_url,
+            'button_text'   => $request->button_text,
+            'button_target' => $request->button_target,
+            'image'         => $image,
+        ];
+        $blogs->update([
+            'section_name' => 'blog_section',
+            'data'         => json_encode($data),
+            'status'       => $request->status
+        ]);
+        return redirect(route('admin.blog.index'))->with('success','Create Successfully');
+    }
+    public function blogDelete($id){
+        $blogs=frontendSection::find($id);
+        $this->file_remove('Backend/images/homepages/blog_image/',$blogs->image_old);
+        $blogs->delete();
         return redirect()->back()->with('success','Delete successfully');
     }
 }

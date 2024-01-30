@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
-    protected $fileable=['category_name','slug','status'];
+    protected $fillable=['category_name','slug','status'];
 }

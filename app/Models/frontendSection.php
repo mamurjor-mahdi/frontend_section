@@ -12,4 +12,7 @@ class frontendSection extends Model
     protected $fillable=[
         'section_name','data','status'
     ];
+    public function category() {
+        $this->belongsTo(category::class,'category_name');
+    }
 }

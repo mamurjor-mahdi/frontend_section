@@ -7,47 +7,55 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card-header form-header">
-            <h4 class="card-title text-center">Category</h4>
+            <h4 class="card-title text-center">Blog</h4>
         </div>
         <div class="card">
             <div class="card-header d-flex justify-content-between">
                 <div class="card-title">{{ $title }}</div>
                 <div>
-                    <a href="{{ route('admin.blog.category.create') }}" class="btn btn-lg btn-primary">Add New</a>
+                    <a href="{{ route('admin.blog.create') }}" class="btn btn-lg btn-primary">Add New</a>
                 </div>
             </div>
             <div class="card-body">
                 <table class="table table-light" id="role_datatable" style="width: 100% !important;">
                     <thead>
                         <th>Sl</th>
-                        <th>Category Name</th>
-                        <th>Slug</th>
+                        <th>Category</th>
+                        <th>Title</th>
+                        <th>Image</th>
                         <th>Status</th>
                         <th class="text-end">Actions</th>
                     </thead>
                     <tbody>
-                         @forelse ($categorys as $key=>$value)
+                    @forelse ($blog as $key=>$value)
+                        @php
+                            $data=json_decode($value->data);
+
+                        @endphp
                             <tr>
                                 <td>{{ $key+1 }}</td>
-                                <td>{{ $value->category_name }}</td>
-                                <td>{{ $value->slug }}</td>
+                                <td>{{ $data->category->category_name }}</td>
+                                <td>{{ $data->title }}</td>
+                                <td>
+                                    <img style="width: 60px; height: 60px;" src="{{ asset('Backend/images/homepages/blog_image/'.$data->image) }}" alt="{{ $data->title }}">
+                                </td>
                                 <td>
                                     {!! $value->status== 1 ? '<span class="badge bg-primary">Publish</span>' : '<span class="badge bg-danger">Pending</span>' !!}
                                 </td>
                                 <td class="d-flex">
-                                    <a href="{{ route('admin.blog.category.edit',$value->id) }}" class="btn btn-sm btn-primary mr-1"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <form action="{{ route('admin.blog.category.delete',$value->id) }}" id="delete-form-{{ $value->id }}" method="post" enctype="multipart/form-value">
+                                    <a href="{{ route('admin.blog.edit',$value->id) }}" class="btn btn-sm btn-primary mr-1"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <form action="{{ route('admin.blog.delete',$value->id) }}" id="delete-form-{{ $value->id }}" method="post" enctype="multipart/form-data">
                                         @csrf
                                         @method('DELETE')
                                     </form>
                                     <button type="button" class="btn btn-sm btn-danger" onclick="alert_message({{ $value->id }})"><i class="fa-solid fa-trash"></i></button>
                                 </td>
-                            </tr>
                         @empty
-                            <tr>
-                                <td class="text-danger text-center" colspan="6">data not found</td>
+                        <tr>
+                            <td class="text-danger text-center" colspan="6">data not found</td>
+                        </tr>
                             </tr>
-                        @endforelse 
+                        @endforelse
                     </tbody>
                 </table>
             </div>

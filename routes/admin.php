@@ -86,12 +86,21 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::patch('/portfolio/update/{id}', [HomePagesSectionController::class, 'portfolioUpdate'])->name('portfolio.update');
     Route::delete('/portfolio/delete/{id}', [HomePagesSectionController::class, 'portfolioDelete'])->name('portfolio.delete');
 });
-//backend portfolio pages route
+//backend category pages route
 Route::prefix('admin')->name('admin.')->group(function(){
-    Route::get('/blog_category/index', [CategoryController::class, 'blogCategoryIndex'])->name('blog.category.index');
-    Route::get('/blog_category/create', [CategoryController::class, 'blog_categoryCreate'])->name('blog.category.create');
-    Route::post('/blog_category/store', [CategoryController::class, 'blog_categoryStore'])->name('blog.category.store');
-    Route::get('/blog_category/edit/{id}', [CategoryController::class, 'blog_categoryEdit'])->name('blog.category.edit');
-    Route::patch('/blog_category/update/{id}', [CategoryController::class, 'blog_categoryUpdate'])->name('blog.category.update');
-    Route::delete('/blog_category/delete/{id}', [CategoryController::class, 'blog_categoryDelete'])->name('blog.category.delete');
+    Route::get('/blogcategory/index', [CategoryController::class, 'blogCategoryIndex'])->name('blog.category.index');
+    Route::get('/blogcategory/create', [CategoryController::class, 'blogCategoryCreate'])->name('blog.category.create');
+    Route::post('/blogcategory/store', [CategoryController::class, 'blogCategoryStore'])->name('blog.category.store');
+    Route::get('/blogcategory/edit/{id}', [CategoryController::class, 'blogCategoryEdit'])->name('blog.category.edit');
+    Route::patch('/blogcategory/update/{id}', [CategoryController::class, 'blogCategoryUpdate'])->name('blog.category.update');
+    Route::delete('/blogcategory/delete/{id}', [CategoryController::class, 'blogCategoryDelete'])->name('blog.category.delete');
+});
+//backend blogs pages route
+Route::prefix('admin')->name('admin.')->group(function(){
+    Route::get('/blog/index', [HomePagesSectionController::class, 'blogIndex'])->name('blog.index');
+    Route::get('/blog/create', [HomePagesSectionController::class, 'blogCreate'])->name('blog.create');
+    Route::post('/blog/store', [HomePagesSectionController::class, 'blogStore'])->name('blog.store');
+    Route::get('/blog/edit/{id}', [HomePagesSectionController::class, 'blogEdit'])->name('blog.edit');
+    Route::patch('/blog/update/{id}', [HomePagesSectionController::class, 'blogUpdate'])->name('blog.update');
+    Route::delete('/blog/delete/{id}', [HomePagesSectionController::class, 'blogDelete'])->name('blog.delete');
 });

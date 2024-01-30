@@ -14,11 +14,11 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <div class="card-header form-header">
+            <div class="card-header">
                 <h4 class="card-title text-center">Hero From</h4>
             </div>
             @include('backend.alert_message.alert')
-            <div class="bg-white px-4 py-3 mb-3 shadow rounded">
+            <div class="bg-white p-4 mb-3 shadow rounded">
                 <form action="{{ route('admin.hero.updateOrCreated') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @isset($heroSection)
@@ -31,7 +31,7 @@
                             // dd($social_share);
                         }
                     @endphp
-
+                    
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -136,27 +136,70 @@
                             @endisset
                         </div>
                         {{-- admore filed start --}}
-
+                       @if(isset($heroSection))
+                           @foreach ($social_share as $key=>$value)
+                           <div class="col-md-12">
+                                <div id="row_items">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="form-lebel">Social Icon</label>
+                                                <input type="text" class="form-control" id="socail_icon" name="social_share[{{ $key ?? '' }}][social_icon]" value="{{ $value->social_icon ?? '' }}" placeholder="socail icon">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="form-lebel">Social Url</label>
+                                                <input type="text" class="form-control" id="socail_url" name="social_share[{{ $key ?? '' }}][socail_url]" value="{{ $value->socail_url ?? '' }}" placeholder="socail url">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                            <div class="input-group">
+                                                <label for="form-lebel">Social Target</label>
+                                                <select class="form-control" id="socail_target" name="social_share[{{ $key ?? '' }}][socail_target]">
+                                                    <option value="">Select Target</option>
+                                                    <option value="_blank" @isset($heroSection)
+                                                        {{ $value->socail_target == '_blank' ? 'selected' : '' }}
+                                                    @endisset>New Tab</option>
+                                                    <option value="_self" @isset($heroSection)
+                                                    {{ $value->socail_target == '_self' ? 'selected' : '' }}
+                                                @endisset>Current Tab</option>
+                                                </select>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <button class="btn btn-danger remove_row_items" type="button"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           @endforeach
+                           <div class="col-md-12 text-right">
+                            <button class="btn btn-success add_row_items" type="button"> Add Filed</button>
+                        </div>
+                        @else
                         <div class="col-md-12">
                             <div id="row_items">
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="form-lebel">Social Icon</label>
-                                            <input type="text" class="form-control" id="socail_icon" name="social_share[][social_icon]" value="" placeholder="socail icon">
+                                            <input type="text" class="form-control" id="socail_icon" name="social_share[0][social_icon]" value="" placeholder="socail icon">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="form-lebel">Social Url</label>
-                                            <input type="text" class="form-control" id="socail_url" name="social_share[][socail_url]" value="" placeholder="socail url">
+                                            <input type="text" class="form-control" id="socail_url" name="social_share[0][socail_url]" value="" placeholder="socail url">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                         <div class="input-group">
                                             <label for="form-lebel">Social Target</label>
-                                            <select class="form-control" id="socail_target" name="social_share[][socail_target]">
+                                            <select class="form-control" id="socail_target" name="social_share[0][socail_target]">
                                                 <option value="">Select Target</option>
                                                 <option value="_blank">New Tab</option>
                                                 <option value="_self">Current Tab</option>
@@ -169,10 +212,12 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-
-
+                        </div>   
+                       @endif
+                        
+                        
+                        
+                        
                         {{-- admore filed end --}}
                         <div class="col-md-12">
                             <div class="form-group">
@@ -194,13 +239,13 @@
                             </div>
                         </div>
 
-                        <div class="col-md-12 text-right">
+                        <div class="col-md-12 mb-3 text-right">
                             <button type="submit" class="btn btn-lg btn-primary">Update</button>
                         </div>
 
                     </div>
                 </form>
-            </div>
+            </div>    
         </div>
     </div>
 @endsection
@@ -211,37 +256,39 @@
     window.alert = function(){};
     var defaultCSS = document.getElementById('bootstrap-css');
     function changeCSS(css){
-        if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
-        else $('head > link').filter(':first').replaceWith(defaultCSS);
+        if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />'); 
+        else $('head > link').filter(':first').replaceWith(defaultCSS); 
     }
     $( document ).ready(function() {
-      var iframe_height = parseInt($('html').height());
+      var iframe_height = parseInt($('html').height()); 
       window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
     });
 </script>
 <script>
-    $(document).ready(function () {
-        $('.add_row_items').click(function (e) {
+    var i =0;
+    $(document).ready(function () { 
+        i++;
+        $('.add_row_items').click(function (e) { 
             e.preventDefault();
             $('#row_items').append(`
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="form-lebel">Social Icon</label>
-                                            <input type="text" class="form-control" id="socail_icon" name="social_share[][social_icon]" value="" placeholder="socail icon">
+                                            <input type="text" class="form-control" id="socail_icon" name="social_share['+i+'][social_icon]" value="" placeholder="socail icon">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="form-lebel">Social Url</label>
-                                            <input type="text" class="form-control" id="socail_url" name="social_share[][socail_url]" value="" placeholder="socail url">
+                                            <input type="text" class="form-control" id="socail_url" name="social_share['+i+'][socail_url]" value="" placeholder="socail url">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                         <div class="input-group">
                                             <label for="form-lebel">Social Target</label>
-                                            <select class="form-control" id="socail_target" name="social_share[][socail_target]">
+                                            <select class="form-control" id="socail_target" name="social_share['+i+'][socail_target]">
                                                 <option value="">Select Target</option>
                                                 <option value="_blank">New Tab</option>
                                                 <option value="_self">Current Tab</option>
@@ -256,7 +303,7 @@
                             </div>
             `)
          });
-         $(document).on('click','.remove_row_items',function (e) {
+         $(document).on('click','.remove_row_items',function (e) { 
             e.preventDefault();
             let row_items=$(this).parent().parent();
             $(row_items).remove();
