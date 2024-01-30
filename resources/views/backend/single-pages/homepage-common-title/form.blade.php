@@ -1,12 +1,12 @@
 @extends('layouts.backend.index')
 @section('title',$title)
 @push('styles')
-    
+
 @endpush
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <div class="card-header">
+            <div class="card-header form-header">
                 <h4 class="card-title text-center">Common Title From</h4>
             </div>
             @include('backend.alert_message.alert')
@@ -21,9 +21,9 @@
                     };
                 @endphp
                 <div class="row">
-                    
+
                     {{--=== service title start ====--}}
-                    <div class="bg-white p-4 mb-3 shadow-sm rounded">
+                    <div class="bg-white px-4 py-3 mb-3 shadow-sm rounded">
                         <div class="row">
                             <div class="w-100">
                                 <h4>Service Title</h4>
@@ -67,7 +67,7 @@
                     {{--=== service title end ====--}}
 
                     {{--=== Why choose start ====--}}
-                    <div class="bg-white p-4 mb-3 shadow-sm rounded">
+                    <div class="bg-white px-4 py-3 mb-3 shadow-sm rounded">
                         <div class="row">
                             <div class="w-100">
                                 <h4>Why Choose Title</h4>
@@ -112,7 +112,7 @@
                     {{--=== Why choose end ====--}}
 
                     {{--=== Portfolio start ====--}}
-                    <div class="bg-white p-4 mb-3 shadow-sm rounded">
+                    <div class="bg-white px-4 py-3 mb-3 shadow-sm rounded">
                         <div class="row">
                             <div class="w-100">
                                 <h4>Portfolio Title</h4>
@@ -156,7 +156,7 @@
                     </div>
                     {{--=== Portfolio end ====--}}
                      {{--=== Testmonial start ====--}}
-                     <div class="bg-white p-4 mb-3 shadow-sm rounded">
+                     <div class="bg-white px-4 py-3 mb-3 shadow-sm rounded">
                         <div class="row">
                             <div class="w-100">
                                 <h4>Testmonial Title</h4>
@@ -200,7 +200,7 @@
                     </div>
                     {{--=== testmonial end ====--}}
                     {{--=== Blogs start ====--}}
-                    <div class="bg-white p-4 mb-3 shadow-sm rounded">
+                    <div class="bg-white px-4 py-3 mb-3 shadow-sm rounded">
                         <div class="row">
                             <div class="w-100">
                                 <h4>Blogs Title</h4>
@@ -244,7 +244,7 @@
                     </div>
                     {{--=== Blogs end ====--}}
                     {{--=== contact start ====--}}
-                    <div class="bg-white p-4 mb-3 shadow-sm rounded">
+                    <div class="bg-white px-4 py-3 mb-3 shadow-sm rounded">
                         <div class="row">
                             <div class="w-100">
                                 <h4>Contact Title</h4>
@@ -307,7 +307,7 @@
                     </div>
                     {{--=== contact end ====--}}
 
-                    <div class="col-md-12 mb-3 text-right">
+                    <div class="col-md-12 text-right">
                        <button type="submit" class="btn btn-lg btn-primary">Update</button>
                     </div>
 

@@ -6,8 +6,8 @@
             <p>UI/UX Designer</p>
 
             <div class="buttons pt-3">
-                <button class="btn btn-primary rounded">HIRE ME</button>
-                <button class="btn btn-dark rounded">DOWNLOAD CV</button>
+                <a href="#" class="btn btn-primary rounded">HIRE ME</a>
+                <a href="#" class="btn btn-dark rounded">DOWNLOAD CV</a>
             </div>
 
             <div class="socials mt-4">

@@ -6,16 +6,16 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <div class="card-header">
-                <h4 class="card-title text-center">About From</h4>
+            <div class="card-header form-header ">
+                <h4 class="card-title">About From</h4>
             </div>
             @include('backend.alert_message.alert')
-            <div class="bg-white p-4 mb-3 shadow rounded">
+            <div class="bg-white px-4 py-3 mb-3 shadow rounded">
                 <form action="{{ route('admin.about.updateorCreated') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @isset($aboutSection)
                         <input type="hidden" name="section_name" value="{{ $aboutSection->section_name }}">
-                        
+
                     @endisset
                     @php
                         if($aboutSection !=null){
@@ -84,7 +84,7 @@
                                 <input class="form-control" type="text" name="button_url" placeholder="button url" value="{{ $data->button_url ?? '' }}">
                             </div>
                         </div>
-                        
+
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="form-label" class="required">Image</label>
@@ -100,7 +100,7 @@
                                 @endisset
                             </div>
                         </div>
-                       
+
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="form-label" class="required">Status</label>
@@ -121,13 +121,13 @@
                             </div>
                         </div>
 
-                        <div class="col-md-12 mb-3 text-right">
+                        <div class="col-md-12 text-right">
                         <button type="submit" class="btn btn-lg btn-primary">Update</button>
                         </div>
 
                     </div>
                 </form>
-            </div>    
+            </div>
         </div>
     </div>
 @endsection

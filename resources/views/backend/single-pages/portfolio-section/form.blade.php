@@ -5,13 +5,13 @@
 @endpush
 @section('content')
     <div class="row">
-        
+
         <div class="col-md-12">
-            <div class="card-header">
+            <div class="card-header form-header">
                 <h4 class="card-title text-center">Portfolio From</h4>
             </div>
             @include('backend.alert_message.alert')
-            <div class="bg-white p-4 mb-3 shadow-sm rounded">
+            <div class="bg-white px-4 py-3 mb-3 shadow-sm rounded">
                 <form action="{{ isset($portfolios) ? route('admin.portfolio.update',$portfolios->id) : route('admin.portfolio.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @isset($portfolios)
@@ -21,7 +21,7 @@
                             $data=json_decode($portfolios->data);
                         @endphp
                     @endisset
-                    
+
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -33,7 +33,7 @@
                                     @enderror
                                 </div>
                             </div>
-    
+
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
@@ -46,7 +46,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="form-label" class="required">Image</label>
@@ -82,11 +82,11 @@
                                 </div>
                             </div>
                         </div>
-    
-                        <div class="col-md-12 mb-3 text-right">
+
+                        <div class="col-md-12 text-right">
                            <button type="submit" class="btn btn-lg btn-primary">Update</button>
                         </div>
-    
+
                     </div>
                 </form>
             </div>

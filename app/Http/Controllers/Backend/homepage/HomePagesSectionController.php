@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Backend\homepage;
 use Illuminate\Http\Request;
 use App\Models\frontendSection;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\HeroSectionRequest;
+use App\Http\Requests\portfolioRequest;
 use App\Http\Requests\testmonialRequest;
+use App\Http\Requests\HeroSectionRequest;
 
 class HomePagesSectionController extends Controller
 {
@@ -16,7 +17,7 @@ class HomePagesSectionController extends Controller
         $heroSection=frontendSection::where('section_name','hero_section')->first();
         return view('backend.single-pages.hero-section.form',compact('breadcrumb','heroSection'));
     }
-    public function heroUpdateOrCreate(HeroSectionRequest $request){ 
+    public function heroUpdateOrCreate(HeroSectionRequest $request){
         if($request->image !=null){
             if($request->hasFile('image')){
                 $image=$this->file_update($request->file('image'),'Backend/images/homepages/hero_image',$request->image_old);
@@ -28,12 +29,12 @@ class HomePagesSectionController extends Controller
                 $image=$request->image_old;
             }
         };
-        
+
         $social_share=[];
         foreach($request->social_share as $value){
             $social_share[]=$value;
         };
-        
+
         $data=[
             'hello_text'         => $request->hello_text,
             'title'              => $request->title,
@@ -48,7 +49,7 @@ class HomePagesSectionController extends Controller
             'hero_image'         => $image,
 
         ];
-        
+
         frontendSection::updateOrCreate(['section_name'=>$request->section_name],[
             'section_name' => 'hero_section',
             'data'         => json_encode($data),
@@ -289,8 +290,8 @@ class HomePagesSectionController extends Controller
     public function testmonialStore(testmonialRequest $request){
         if($request->hasFile('image')){
             $image=$this->file_upload('Backend/images/homepages/testmonial_image',$request->image);
-        }; 
-        
+        };
+
         $data=[
             'testmonial_name' => $request->testmonial_name,
             'designation'     => $request->designation,
@@ -312,7 +313,7 @@ class HomePagesSectionController extends Controller
     }
     public function testmonialUpdate(Request $request,$id){
         $testmonials=frontendSection::find($id);
-        
+
         if($request->hasFile('image')){
             $image=$this->file_update($request->image,'Backend/images/homepages/testmonial_image/',$testmonials->image_old);
         }else{
@@ -351,11 +352,11 @@ class HomePagesSectionController extends Controller
         $portfolio=frontendSection::where('section_name','portfolio_section')->get();
         return view('backend.single-pages.portfolio-section.form',compact('breadcrumb','portfolio'));
     }
-    public function portfolioStore(Request $request){
+    public function portfolioStore(portfolioRequest $request){
         if($request->hasFile('image')){
             $image=$this->file_upload('Backend/images/homepages/portfolio_image',$request->image);
-        }; 
-        
+        };
+
         $data=[
             'title'    => $request->title,
             'site_url' => $request->site_url,

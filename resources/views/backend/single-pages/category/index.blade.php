@@ -7,40 +7,44 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card-header form-header">
-            <h4 class="card-title text-center">Service Table</h4>
+            <h4 class="card-title text-center">Category</h4>
         </div>
         <div class="card">
             <div class="card-header d-flex justify-content-between">
                 <div class="card-title">{{ $title }}</div>
                 <div>
-                    <a href="{{ route('admin.service.create') }}" class="btn btn-lg btn-primary">Add Form</a>
+                    <a href="{{ route('admin.blog.category.create') }}" class="btn btn-lg btn-primary">Add New</a>
                 </div>
             </div>
             <div class="card-body">
                 <table class="table table-light" id="role_datatable" style="width: 100% !important;">
                     <thead>
                         <th>Sl</th>
-                        <th>Counter Number</th>
-                        <th>Counter Title</th>
+                        <th>Title</th>
+                        <th>Site Url</th>
+                        <th>Image</th>
                         <th>Status</th>
                         <th class="text-end">Actions</th>
                     </thead>
                     <tbody>
-                        @forelse ($service as $key=>$value)
+                        {{--  @forelse ($portfolio as $key=>$value)
                         @php
                             $data=json_decode($value->data);
 
                         @endphp
                             <tr>
                                 <td>{{ $key+1 }}</td>
-                                <td>{{ $data->service_icon }}</td>
                                 <td>{{ $data->title }}</td>
+                                <td>{{ $data->site_url }}</td>
                                 <td>
-                                    {!! $value->status== 1 ? '<span class="badge bg-primary">Publish</span>' : '<span class="bg-danger">Pending</span>' !!}
+                                    <img style="width: 60px; height: 60px;" src="{{ asset('Backend/images/homepages/portfolio_image/'.$data->image) }}" alt="{{ $data->title }}">
+                                </td>
+                                <td>
+                                    {!! $value->status== 1 ? '<span class="badge bg-primary">Publish</span>' : '<span class="badge bg-danger">Pending</span>' !!}
                                 </td>
                                 <td class="d-flex">
-                                    <a href="{{ route('admin.service.edit',$value->id) }}" class="btn btn-sm btn-primary mr-1"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <form action="{{ route('admin.service.delete',$value->id) }}" id="delete-form-{{ $value->id }}" method="post">
+                                    <a href="{{ route('admin.portfolio.edit',$value->id) }}" class="btn btn-sm btn-primary mr-1"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <form action="{{ route('admin.portfolio.delete',$value->id) }}" id="delete-form-{{ $value->id }}" method="post" enctype="multipart/form-data">
                                         @csrf
                                         @method('DELETE')
                                     </form>
@@ -48,10 +52,10 @@
                                 </td>
                             </tr>
                         @empty
-                        <tr>
-                            <td class="text-danger text-center" colspan="6">data not found</td>
-                        </tr>
-                        @endforelse
+                            <tr>
+                                <td class="text-danger text-center" colspan="6">data not found</td>
+                            </tr>
+                        @endforelse  --}}
                     </tbody>
                 </table>
             </div>

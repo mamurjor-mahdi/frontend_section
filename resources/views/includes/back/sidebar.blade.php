@@ -74,6 +74,12 @@
                     </ul>
                 </li>
                 <li>
+                    <a href="#category" class="iq-waves-effect collapsed"  data-toggle="collapse" aria-expanded="false"><i class="fa-brands fa-pagelines"></i></i><span>All Category</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                    <ul id="category" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                        <li><a href="{{ route('admin.blog.category.index') }}"><i class="fa-solid fa-section"></i>Blog Category</a></li>
+                    </ul>
+                </li>
+                <li>
                     <a href="todo.html" class="iq-waves-effect" aria-expanded="false">
                         {{-- <i class="ri-pencil-ruler-line"></i> --}}
                         <i class="fa-brands fa-vuejs"></i>

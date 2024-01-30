@@ -14,11 +14,11 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <div class="card-header">
+            <div class="card-header form-header">
                 <h4 class="card-title text-center">Hero From</h4>
             </div>
             @include('backend.alert_message.alert')
-            <div class="bg-white p-4 mb-3 shadow rounded">
+            <div class="bg-white px-4 py-3 mb-3 shadow rounded">
                 <form action="{{ route('admin.hero.updateOrCreated') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @isset($heroSection)
@@ -31,7 +31,7 @@
                             // dd($social_share);
                         }
                     @endphp
-                    
+
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -131,12 +131,12 @@
                                 </div>
                             </div>
                             @isset($heroSection)
-                                <img style="width: 6px; height:5px" src="{{ asset('Backend/images/homepages/hero_image/'.$data->hero_image) }}" alt="">
+                                <img style="width: 60px; height:50px" src="{{ asset('Backend/images/homepages/hero_image/'.$data->hero_image) }}" alt="">
                                 <input hidden name="image_old" id="image_old" class="form-control" value="{{ $data->hero_image }}">
                             @endisset
                         </div>
                         {{-- admore filed start --}}
-                       
+
                         <div class="col-md-12">
                             <div id="row_items">
                                 <div class="row">
@@ -170,9 +170,9 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        
-                        
+
+
+
                         {{-- admore filed end --}}
                         <div class="col-md-12">
                             <div class="form-group">
@@ -194,13 +194,13 @@
                             </div>
                         </div>
 
-                        <div class="col-md-12 mb-3 text-right">
+                        <div class="col-md-12 text-right">
                             <button type="submit" class="btn btn-lg btn-primary">Update</button>
                         </div>
 
                     </div>
                 </form>
-            </div>    
+            </div>
         </div>
     </div>
 @endsection
@@ -211,17 +211,17 @@
     window.alert = function(){};
     var defaultCSS = document.getElementById('bootstrap-css');
     function changeCSS(css){
-        if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />'); 
-        else $('head > link').filter(':first').replaceWith(defaultCSS); 
+        if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+        else $('head > link').filter(':first').replaceWith(defaultCSS);
     }
     $( document ).ready(function() {
-      var iframe_height = parseInt($('html').height()); 
+      var iframe_height = parseInt($('html').height());
       window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
     });
 </script>
 <script>
-    $(document).ready(function () { 
-        $('.add_row_items').click(function (e) { 
+    $(document).ready(function () {
+        $('.add_row_items').click(function (e) {
             e.preventDefault();
             $('#row_items').append(`
                                 <div class="row">
@@ -256,7 +256,7 @@
                             </div>
             `)
          });
-         $(document).on('click','.remove_row_items',function (e) { 
+         $(document).on('click','.remove_row_items',function (e) {
             e.preventDefault();
             let row_items=$(this).parent().parent();
             $(row_items).remove();

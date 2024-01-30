@@ -8,7 +8,7 @@
                         <p class="mb-3">Accusantium labore nostrum similique quisquam.</p>
                     </div>
                     <div class="col-sm-3 text-center text-sm-right">
-                        <button class="btn btn-light rounded">Hire Me!</button>
+                        <a href="#" class="btn btn-light rounded">Hire Me!</a>
                     </div>
                 </div>
             </div>

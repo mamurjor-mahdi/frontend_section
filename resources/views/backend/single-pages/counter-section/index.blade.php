@@ -6,7 +6,7 @@
 @section('content')
 <div class="row">
     <div class="col-md-12">
-        <div class="card-header">
+        <div class="card-header form-header">
             <h4 class="card-title text-center">Counter Table</h4>
         </div>
         <div class="card">
@@ -26,10 +26,10 @@
                         <th class="text-end">Actions</th>
                     </thead>
                     <tbody>
-                        @foreach ($counter as $key=>$value)
+                        @forelse ($counter as $key=>$value)
                         @php
                             $data=json_decode($value->data);
-                            
+
                         @endphp
                             <tr>
                                 <td>{{ $key+1 }}</td>
@@ -47,7 +47,11 @@
                                     <button type="button" class="btn btn-sm btn-danger" onclick="alert_message({{ $value->id }})"><i class="fa-solid fa-trash"></i></button>
                                 </td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <td class="text-danger text-center" colspan="6">data not found</td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
@@ -58,7 +62,7 @@
 @push('scripts')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-      function alert_message(delete_id) { 
+      function alert_message(delete_id) {
     Swal.fire({
     title: "Are you sure?",
     text: "Delete!!",
@@ -73,6 +77,6 @@
             }
         });
     }
-    
+
 </script>
 @endpush

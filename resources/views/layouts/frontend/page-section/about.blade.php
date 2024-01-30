@@ -9,7 +9,7 @@
                 <p class="subtitle">UI/UX Designer</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident, pariatur, aperiam aut autem voluptas odit. Odio ducimus delectus totam sed aliquam sequi praesentium mollitia, illum repudiandae quidem quod, magni magnam.</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, eius, nam. Quo praesentium qui temporibus voluptatum, facilis aliquid eligendi fugiat beatae neque inventore non. Laborum repellendus consequatur ullam voluptatum asperiores.</p>
-                <button class="btn btn-primary rounded mt-3">DOWNLOAD CV</button>
+                <a href="#" class="btn btn-primary rounded mt-3">DOWNLOAD CV</a>
             </div>
         </div>
     </div>

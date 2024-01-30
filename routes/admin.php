@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\homepage\CategoryController;
 use App\Http\Controllers\Backend\homepage\homePageCommonTitleController;
 use App\Http\Controllers\Backend\homepage\HomePagesSectionController;
 
@@ -84,4 +85,13 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::get('/portfolio/edit/{id}', [HomePagesSectionController::class, 'portfolioEdit'])->name('portfolio.edit');
     Route::patch('/portfolio/update/{id}', [HomePagesSectionController::class, 'portfolioUpdate'])->name('portfolio.update');
     Route::delete('/portfolio/delete/{id}', [HomePagesSectionController::class, 'portfolioDelete'])->name('portfolio.delete');
+});
+//backend portfolio pages route
+Route::prefix('admin')->name('admin.')->group(function(){
+    Route::get('/blog_category/index', [CategoryController::class, 'blogCategoryIndex'])->name('blog.category.index');
+    Route::get('/blog_category/create', [CategoryController::class, 'blog_categoryCreate'])->name('blog.category.create');
+    Route::post('/blog_category/store', [CategoryController::class, 'blog_categoryStore'])->name('blog.category.store');
+    Route::get('/blog_category/edit/{id}', [CategoryController::class, 'blog_categoryEdit'])->name('blog.category.edit');
+    Route::patch('/blog_category/update/{id}', [CategoryController::class, 'blog_categoryUpdate'])->name('blog.category.update');
+    Route::delete('/blog_category/delete/{id}', [CategoryController::class, 'blog_categoryDelete'])->name('blog.category.delete');
 });
