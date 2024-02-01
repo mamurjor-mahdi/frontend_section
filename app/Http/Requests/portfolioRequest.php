@@ -22,10 +22,10 @@ class portfolioRequest extends FormRequest
     public function rules(): array
     {
         $rules= [
-            'title'=>'require',
-            'site_url'=>'require',
-            'status'=>'require',
-            'image'=>'require|mimes:png,jpg,jpeg|file',
+            'title'=>'required',
+            'site_url'=>'required',
+            'status'=>'required',
+            'image'=>'required|mimes:png,jpg,jpeg|file',
         ];
         if(request()->image !=null){
             $rules['image']='required';

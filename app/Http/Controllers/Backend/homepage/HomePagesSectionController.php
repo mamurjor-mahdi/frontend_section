@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Backend\homepage;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\frontendSection;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 use App\Http\Requests\portfolioRequest;
 use App\Http\Requests\testmonialRequest;
 use App\Http\Requests\HeroSectionRequest;
-use App\Models\Category;
 
 class HomePagesSectionController extends Controller
 {
@@ -19,6 +20,7 @@ class HomePagesSectionController extends Controller
         return view('backend.single-pages.hero-section.form',compact('breadcrumb','heroSection'));
     }
     public function heroUpdateOrCreate(HeroSectionRequest $request){
+        // dd($request->all());
         if($request->image !=null){
             if($request->hasFile('image')){
                 $image=$this->file_update($request->file('image'),'Backend/images/homepages/hero_image',$request->image_old);
@@ -47,7 +49,7 @@ class HomePagesSectionController extends Controller
             'cv_button_url'      => $request->cv_button_url,
             'cv_button_text'     => $request->cv_button_text,
             'social_share'       => json_encode($social_share),
-            'hero_image'         => $image,
+            'image'              => $image,
 
         ];
 
@@ -314,9 +316,11 @@ class HomePagesSectionController extends Controller
     }
     public function testmonialUpdate(Request $request,$id){
         $testmonials=frontendSection::find($id);
-
+        if($testmonials !=null){
+            $update_data=json_decode($testmonials->data);
+        }
         if($request->hasFile('image')){
-            $image=$this->file_update($request->image,'Backend/images/homepages/testmonial_image/',$testmonials->image_old);
+            $image=$this->file_update($request->image,'Backend/images/homepages/testmonial_image/',$update_data->image);
         }else{
             $image=$request->image_old;
         };
@@ -378,8 +382,11 @@ class HomePagesSectionController extends Controller
     }
     public function portfolioUpdate(Request $request,$id){
         $portfolios=frontendSection::find($id);
+        if($portfolios !=null){
+            $update_data=json_decode($portfolios->data);
+        }
         if($request->hasFile('image')){
-            $image=$this->file_update($request->image,'Backend/images/homepages/portfolio_image/',$portfolios->image_old);
+            $image=$this->file_update($request->image,'Backend/images/homepages/portfolio_image/',$update_data->image);
         }else{
             $image=$request->image_old;
         };
@@ -405,7 +412,7 @@ class HomePagesSectionController extends Controller
     public function blogIndex(){
         $breadcrumb = ['Dashboard' => route('admin.dashboard'),'Table'=>''];
         setThisPageTitle('table');
-        $blog=frontendSection::with('category')->where('section_name','blog_section')->get();
+        $blog=frontendSection::where('section_name','blog_section')->get();
         return view('backend.single-pages.blog-section.index',compact('breadcrumb','blog'));
     }
     public function blogCreate(){
@@ -413,7 +420,7 @@ class HomePagesSectionController extends Controller
         $breadcrumb = ['Dashboard' => route('admin.dashboard'),'index'=>route('admin.blog.index'),'Create'=>''];
         setThisPageTitle('Create');
         $blog=frontendSection::where('section_name','blog_section')->get();
-        return view('backend.single-pages.blog-section.form',compact('breadcrumb','blog','category'));
+        return view('backend.single-pages.blog-section.form',compact('breadcrumb','blog','categories'));
     }
     public function blogStore(Request $request){
         if($request->hasFile('image')){
@@ -440,12 +447,16 @@ class HomePagesSectionController extends Controller
         $breadcrumb = ['Dashboard' => route('admin.dashboard'),'index'=>route('admin.blog.index'),'edit'=>'' ];
         setThisPageTitle('edit');
         $blogs=frontendSection::find($id);
-        return view('backend.single-pages.blog-section.form',compact('breadcrumb','blogs'));
+        $categories=Category::all();
+        return view('backend.single-pages.blog-section.form',compact('breadcrumb','blogs','categories'));
     }
     public function blogUpdate(Request $request,$id){
         $blogs=frontendSection::find($id);
+        if($blogs !=null){
+            $update_data=json_decode($blogs->data);
+        }
         if($request->hasFile('image')){
-            $image=$this->file_update($request->image,'Backend/images/homepages/blog_image/',$blogs->image_old);
+            $image=$this->file_update($request->image,'Backend/images/homepages/blog_image/',$update_data->image);
         }else{
             $image=$request->image_old;
         };
@@ -467,7 +478,10 @@ class HomePagesSectionController extends Controller
     }
     public function blogDelete($id){
         $blogs=frontendSection::find($id);
-        $this->file_remove('Backend/images/homepages/blog_image/',$blogs->image_old);
+        if($blogs !=null){
+            $data=json_decode($blogs->data);
+        }
+        $this->file_remove('Backend/images/homepages/blog_image/',$data->image);
         $blogs->delete();
         return redirect()->back()->with('success','Delete successfully');
     }

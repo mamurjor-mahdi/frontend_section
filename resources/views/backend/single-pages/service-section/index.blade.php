@@ -7,13 +7,13 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card-header form-header">
-            <h4 class="card-title text-center">Service Table</h4>
+            <h4 class="card-title text-center">Service</h4>
         </div>
         <div class="card">
             <div class="card-header d-flex justify-content-between">
                 <div class="card-title">{{ $title }}</div>
                 <div>
-                    <a href="{{ route('admin.service.create') }}" class="btn btn-lg btn-primary">Add Form</a>
+                    <a href="{{ route('admin.service.create') }}" class="btn btn-lg btn-primary">Add New</a>
                 </div>
             </div>
             <div class="card-body">

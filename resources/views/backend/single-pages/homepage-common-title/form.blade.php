@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card-header form-header">
-                <h4 class="card-title text-center">Common Title From</h4>
+                <h4 class="card-title text-center">Common Title</h4>
             </div>
             @include('backend.alert_message.alert')
             <form action="{{ route('admin.pagetitle.updateorCreated') }}" method="POST" enctype="multipart/form-data">

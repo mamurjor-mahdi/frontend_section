@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card-header form-header">
-                <h4 class="card-title text-center">Choose From</h4>
+                <h4 class="card-title text-center">Choose</h4>
             </div>
             <div class="bg-white px-4 py-3 mb-3 shadow-sm rounded">
                 @include('backend.alert_message.alert')

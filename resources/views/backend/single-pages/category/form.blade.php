@@ -40,7 +40,7 @@
                                     {{ $categorys->status == 1 ? 'selected': '' }}
                                     @endisset>publish</option>
                                     <option value="2" @isset($categorys)
-                                    {{ $categorys->status == 1 ? 'selected': '' }}
+                                    {{ $categorys->status == 2 ? 'selected': '' }}
                                     @endisset>pending</option>
                                 </select>
                                 <div>

@@ -34,7 +34,7 @@
                         @endphp
                             <tr>
                                 <td>{{ $key+1 }}</td>
-                                <td>{{ $data->category->category_name }}</td>
+                                <td>{{ $data->category }}</td>
                                 <td>{{ $data->title }}</td>
                                 <td>
                                     <img style="width: 60px; height: 60px;" src="{{ asset('Backend/images/homepages/blog_image/'.$data->image) }}" alt="{{ $data->title }}">

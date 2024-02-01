@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class frontendSection extends Model
 {
@@ -13,6 +14,6 @@ class frontendSection extends Model
         'section_name','data','status'
     ];
     public function category() {
-        $this->belongsTo(category::class,'category_name');
+        $this->belongsTo(Category::class,'category','id');
     }
 }

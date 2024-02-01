@@ -8,7 +8,7 @@
 
         <div class="col-md-12">
             <div class="card-header form-header">
-                <h4 class="card-title text-center">Blog From</h4>
+                <h4 class="card-title text-center">Blog</h4>
             </div>
             @include('backend.alert_message.alert')
             <div class="bg-white px-4 py-3 mb-3 shadow-sm rounded">
@@ -28,9 +28,15 @@
                                 <label for="form-label" class="required">Category</label>
                                 <select name="category" id="cetegory" class="form-control">
                                     <option value="">Selecte Category</option>
-                                    @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->category_name }}</option>
-                                    @endforeach
+                                    @isset($blogs)
+                                        @php
+                                            $category_data=json_decode($blogs->data)
+                                        @endphp
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}" {{ $category_data->category == $category->id ? 'selected' : '' }}>{{ $category->category_name }}</option>
+                                        @endforeach
+                                    @endisset
+
                                 </select>
                                 <div>
                                     @error('site_url')
@@ -65,14 +71,14 @@
                             <div class="form-group">
                                 <label for="form-label">Button Url</label>
                                 <input class="form-control" type="text" name="button_url" placeholder="button url" value="{{ $data->button_url ?? '' }}">
-                                
+
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="form-label" >Button Text</label>
                                 <input class="form-control" type="text" name="button_text" placeholder="button text" value="{{ $data->button_text ?? '' }}">
-                                
+
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -87,7 +93,7 @@
                                     {{ $data->button_target == "_self" ? 'selected' : '' }}
                                 @endisset>Current Tab</option>
                                 </select>
-                                
+
                             </div>
                         </div>
                         <div class="col-md-6">
