@@ -6,7 +6,6 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\frontendSection;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\File;
 use App\Http\Requests\portfolioRequest;
 use App\Http\Requests\testmonialRequest;
 use App\Http\Requests\HeroSectionRequest;
@@ -20,7 +19,7 @@ class HomePagesSectionController extends Controller
         return view('backend.single-pages.hero-section.form',compact('breadcrumb','heroSection'));
     }
     public function heroUpdateOrCreate(HeroSectionRequest $request){
-        // dd($request->all());
+        // dd($request->data);
         if($request->image !=null){
             if($request->hasFile('image')){
                 $image=$this->file_update($request->file('image'),'Backend/images/homepages/hero_image',$request->image_old);
@@ -121,7 +120,7 @@ class HomePagesSectionController extends Controller
         $counters->delete();
         return redirect()->back()->with('success','Delete successfully');
     }
-    // Header-widget--------->
+    // about-widget--------->
     public function aboutformShow(){
         $breadcrumb = ['Dashboard' => route('admin.dashboard'),'Create'=>''];
         setThisPageTitle('Create');
@@ -483,6 +482,58 @@ class HomePagesSectionController extends Controller
         }
         $this->file_remove('Backend/images/homepages/blog_image/',$data->image);
         $blogs->delete();
+        return redirect()->back()->with('success','Delete successfully');
+    }
+    // hereme-widget--------->
+    public function hiremeformShow(){
+        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'Create'=>''];
+        setThisPageTitle('Create');
+        $hiremeSection=frontendSection::where('section_name','hireme_section')->first();
+        return view('backend.single-pages.hireme-section.form',compact('breadcrumb','hiremeSection'));
+    }
+    public function hiremeUpdateOrCreate(Request $request){
+        $request->validate([
+            'title'       => 'required',
+            'description' => 'required',
+            'status'      => 'required',
+        ]);
+        $data=[
+            'title'         => $request->title,
+            'description'   => $request->description,
+            'button_text'   => $request->button_text,
+            'button_target' => $request->button_target,
+            'button_url'    => $request->button_url,
+        ];
+        frontendSection::updateOrCreate(['section_name'=>$request->section_name],[
+            'section_name' => 'hireme_section',
+            'data'         => json_encode($data),
+            'status'       => $request->status
+        ]);
+        return redirect()->back()->with('success','Update successfully');
+    }
+    //contact form create
+    public function contactIndex(){
+        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'index'=>''];
+        setThisPageTitle('Index');
+        $contactmail=frontendSection::where('section_name','contact_form')->get();
+        return view('backend.single-pages.contact-form.index',compact('breadcrumb','contactmail'));
+    }
+    public function contactCreate(Request $request){
+        $request->validate([
+            'your_email'       => 'required',
+        ]);
+        $data=[
+            'your_email'         => $request->your_email,
+        ];
+        frontendSection::updateOrCreate([
+            'section_name' => 'contact_form',
+            'data'         => json_encode($data),
+        ]);
+        return redirect()->back()->with('success','Contact Form Update successfully');
+    }
+    public function contactDelete($id){
+        $contactmail=frontendSection::find($id);
+        $contactmail->delete();
         return redirect()->back()->with('success','Delete successfully');
     }
 }

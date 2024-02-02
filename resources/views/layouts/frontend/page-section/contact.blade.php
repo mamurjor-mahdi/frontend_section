@@ -8,9 +8,10 @@
             <div class="form">
                 <h6 class="subtitle">Available 24/7</h6>
                 <h6 class="section-title mb-4">Get In Touch</h6>
-                <form>
+                <form action="{{ route('admin.contact.Created') }}" method="post">
+                    @csrf
                     <div class="form-group">
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+                        <input type="email" name="your_email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
                     </div>
                     <div class="form-group">
                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>

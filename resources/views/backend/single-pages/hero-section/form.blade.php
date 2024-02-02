@@ -14,7 +14,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <div class="card-header">
+            <div class="card-header form-header">
                 <h4 class="card-title text-center">Hero</h4>
             </div>
             @include('backend.alert_message.alert')

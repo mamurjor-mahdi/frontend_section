@@ -31,12 +31,12 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::post('pagetitle/create', [homePageCommonTitleController::class, 'updateOrCreate'])->name('pagetitle.updateorCreated');
 });
 
-//backend home pages route
+//backend hero section route
 Route::prefix('admin')->name('admin.')->group(function(){
     Route::get('hero/formshow', [HomePagesSectionController::class, 'HeroformShow'])->name('hero.form.show');
     Route::post('/hero/create', [HomePagesSectionController::class, 'heroUpdateOrCreate'])->name('hero.updateOrCreated');
 });
-//backend home pages route
+//backend counter route
 Route::prefix('admin')->name('admin.')->group(function(){
     Route::get('/counter/index', [HomePagesSectionController::class, 'counterIndex'])->name('counter.index');
     Route::get('/counter/create', [HomePagesSectionController::class, 'counterCreate'])->name('counter.create');
@@ -103,4 +103,15 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::get('/blog/edit/{id}', [HomePagesSectionController::class, 'blogEdit'])->name('blog.edit');
     Route::patch('/blog/update/{id}', [HomePagesSectionController::class, 'blogUpdate'])->name('blog.update');
     Route::delete('/blog/delete/{id}', [HomePagesSectionController::class, 'blogDelete'])->name('blog.delete');
+});
+//backend hireme pages route
+Route::prefix('admin')->name('admin.')->group(function(){
+    Route::get('hireme/formshow', [HomePagesSectionController::class, 'hiremeformShow'])->name('hireme.form.show');
+    Route::post('/hireme/create', [HomePagesSectionController::class, 'hiremeUpdateOrCreate'])->name('hireme.updateorCreated');
+});
+//backend hireme pages route
+Route::prefix('admin')->name('admin.')->group(function(){
+    Route::get('contact/formshow', [HomePagesSectionController::class, 'contactIndex'])->name('contact.index.show');
+    Route::post('/contact/create', [HomePagesSectionController::class, 'contactCreate'])->name('contact.Created');
+    Route::delete('/contact/delete/{id}', [HomePagesSectionController::class, 'contactDelete'])->name('contact.delete');
 });

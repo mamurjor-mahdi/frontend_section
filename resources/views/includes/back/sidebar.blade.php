@@ -66,6 +66,8 @@
                         <li><a href="{{ route('admin.testmonial.index') }}"><i class="fa-solid fa-section"></i>Testmonial Section</a></li>
                         <li><a href="{{ route('admin.portfolio.index') }}"><i class="fa-solid fa-section"></i>Portfolio Section</a></li>
                         <li><a href="{{ route('admin.blog.index') }}"><i class="fa-solid fa-section"></i>Blog Section</a></li>
+                        <li><a href="{{ route('admin.hireme.form.show') }}"><i class="fa-solid fa-section"></i>HireMe Section</a></li>
+                        
                     </ul>
                 </li>
                 <li>
@@ -81,11 +83,14 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="todo.html" class="iq-waves-effect" aria-expanded="false">
+                    <a href="#contact_email" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false">
                         {{-- <i class="ri-pencil-ruler-line"></i> --}}
                         <i class="fa-brands fa-vuejs"></i>
-                        <span>Theme Settings</span>
+                        <span>Theme Settings</span><i class="ri-arrow-right-s-line iq-arrow-right"></i>
                     </a>
+                    <ul id="contact_email" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                        <li><a href="{{ route('admin.contact.index.show') }}"><i class="fa-solid fa-section"></i>Contact Email</a></li>
+                    </ul>
                 </li>
                 <li class="iq-menu-title"><i class="ri-subtract-line">
                     </i>
