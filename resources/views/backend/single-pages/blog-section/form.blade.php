@@ -5,12 +5,11 @@
 @endpush
 @section('content')
     <div class="row">
-
+        @include('backend.alert_message.alert')
         <div class="col-md-12">
             <div class="card-header form-header">
                 <h4 class="card-title text-center">Blog</h4>
             </div>
-            @include('backend.alert_message.alert')
             <div class="bg-white px-4 py-3 mb-3 shadow-sm rounded">
                 <form action="{{ isset($blogs) ? route('admin.blog.update',$blogs->id) : route('admin.blog.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf

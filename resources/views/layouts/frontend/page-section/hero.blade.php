@@ -1,7 +1,7 @@
 <section class="header" id="home">
     <div class="container">
         <div class="infos">
-            <h6 class="subtitle">hello,I'm</h6>
+            <h6 class="subtitle">hello text</h6>
             <h6 class="title">Hero section</h6>
             <p>UI/UX Designer</p>
 

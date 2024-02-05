@@ -6,6 +6,7 @@
 @section('content')
 <div class="row">
     <div class="col-md-12">
+        @include('backend.alert_message.alert')
         <div class="card-header form-header">
             <h4 class="card-title text-center">Portfolio</h4>
         </div>

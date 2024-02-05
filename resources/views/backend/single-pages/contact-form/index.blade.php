@@ -5,6 +5,7 @@
 @endpush
 @section('content')
 <div class="row">
+    @include('backend.alert_message.alert')
     <div class="col-md-12">
         <div class="card-header form-header">
             <h4 class="card-title text-center">Contact</h4>

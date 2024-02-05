@@ -115,3 +115,8 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::post('/contact/create', [HomePagesSectionController::class, 'contactCreate'])->name('contact.Created');
     Route::delete('/contact/delete/{id}', [HomePagesSectionController::class, 'contactDelete'])->name('contact.delete');
 });
+//backend hireme pages route
+Route::prefix('admin')->name('admin.')->group(function(){
+    Route::get('mapaddress/formshow', [HomePagesSectionController::class, 'mapaddressformShow'])->name('mapaddress.form.show');
+    Route::post('/mapaddress/create', [HomePagesSectionController::class, 'mapaddressUpdateOrCreate'])->name('mapaddress.updateorCreated');
+});

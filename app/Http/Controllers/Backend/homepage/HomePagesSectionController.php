@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\frontendSection;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\portfolioRequest;
+use App\Http\Requests\mapaddressRequest;
 use App\Http\Requests\testmonialRequest;
 use App\Http\Requests\HeroSectionRequest;
 
@@ -19,14 +20,14 @@ class HomePagesSectionController extends Controller
         return view('backend.single-pages.hero-section.form',compact('breadcrumb','heroSection'));
     }
     public function heroUpdateOrCreate(HeroSectionRequest $request){
-        // dd($request->data);
+        
         if($request->image !=null){
-            if($request->hasFile('image')){
-                $image=$this->file_update($request->file('image'),'Backend/images/homepages/hero_image',$request->image_old);
+            if($request->image_old){
+                $image=$this->file_update('Backend/images/homepages/hero_image',$request->image,$request->image_old);
             }
         }else{
-            if($request->hasFile('image')){
-                $image=$this->file_upload('Backend/images/homepages/hero_image',$request->file('image'));
+            if($request->image){
+                $image=$this->file_upload('Backend/images/homepages/hero_image',$request->image);
             }else{
                 $image=$request->image_old;
             }
@@ -89,7 +90,7 @@ class HomePagesSectionController extends Controller
             'data'         => json_encode($data),
             'status'       => $request->status
         ]);
-        return redirect(route('admin.counter.index'))->with('success','Create Successfully');
+        return redirect()->route('admin.counter.index')->with('success','Create Successfully');
     }
     public function counterEdit($id){
         $breadcrumb = ['Dashboard' => route('admin.dashboard'),'index'=>route('admin.counter.index'),'edit'=>'' ];
@@ -535,5 +536,30 @@ class HomePagesSectionController extends Controller
         $contactmail=frontendSection::find($id);
         $contactmail->delete();
         return redirect()->back()->with('success','Delete successfully');
+    }
+     // hereme-widget--------->
+     public function mapaddressformShow(){
+        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'Create'=>''];
+        setThisPageTitle('Create');
+        $mapaddressSection=frontendSection::where('section_name','mapaddress_section')->first();
+        return view('backend.single-pages.mapaddress-section.form',compact('breadcrumb','mapaddressSection'));
+    }
+    public function mapaddressUpdateOrCreate(mapaddressRequest $request){
+        
+        $data=[
+            'location_title' => $request->location_title,
+            'address'        => $request->address,
+            'number_title'   => $request->number_title,
+            'number'         => $request->number,
+            'email_title'    => $request->email_title,
+            'email'          => $request->email,
+            'map_url'        => $request->map_url,
+        ];
+        frontendSection::updateOrCreate(['section_name'=>$request->section_name],[
+            'section_name' => 'mapaddress_section',
+            'data'         => json_encode($data),
+            'status'       => $request->status
+        ]);
+        return redirect()->back()->with('success','Update successfully');
     }
 }

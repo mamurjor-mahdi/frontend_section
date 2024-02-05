@@ -13,11 +13,11 @@
 @endpush
 @section('content')
     <div class="row">
+        @include('backend.alert_message.alert')
         <div class="col-md-12">
             <div class="card-header form-header">
                 <h4 class="card-title text-center">Hero</h4>
             </div>
-            @include('backend.alert_message.alert')
             <div class="bg-white p-4 mb-3 shadow rounded">
                 <form action="{{ route('admin.hero.updateOrCreated') }}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -129,12 +129,15 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
+                                @isset($data)
+                                    @if ($data->image)
+                                        <img style="width: 60px; height:50px" src="{{ asset('Backend/images/homepages/hero_image/'.$data->image) }}" alt="">
+                                    @else
+                                        <img src="" alt="img">
+                                    @endif
+                                        <input hidden name="image_old" id="image_old" class="form-control" value="{{ asset('Backend/images/homepages/hero_image/'.$data->image) }}">
+                                @endisset
                             </div>
-
-                            @isset($heroSection)
-                                <img style="width: 60px; height:50px" src="{{ asset('Backend/images/homepages/hero_image/'.$data->image) }}" alt="">
-                                <input hidden name="image_old" id="image_old" class="form-control" value="{{ asset('Backend/images/homepages/hero_image/'.$data->image) }}">
-                            @endisset
                         </div>
                         {{-- admore filed start --}}
                        @if(isset($heroSection))
@@ -215,10 +218,6 @@
                             </div>
                         </div>
                        @endif
-
-
-
-
                         {{-- admore filed end --}}
                         <div class="col-md-12">
                             <div class="form-group">

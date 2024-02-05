@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\frontendSection;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class HomePageController extends Controller
 {
     public function home(){
-        return view('layouts.frontend.index');
+        $hero=DB::table('frontend_sections')->where('section_name','hero_section')->first();
+        $data['hero_section']=json_decode($hero->data);
+        return view('layouts.frontend.index',$data);
     }
+    
 }

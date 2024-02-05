@@ -5,12 +5,12 @@
 @endpush
 @section('content')
     <div class="row">
+        @include('backend.alert_message.alert')
         <div class="col-md-12">
             <div class="card-header form-header">
                 <h4 class="card-title text-center">Choose</h4>
             </div>
             <div class="bg-white px-4 py-3 mb-3 shadow-sm rounded">
-                @include('backend.alert_message.alert')
                 <form action="{{ isset($chooses) ? route('admin.choose.update',$chooses->id) : route('admin.choose.store') }}" method="POST">
                     @csrf
                     @isset($chooses)

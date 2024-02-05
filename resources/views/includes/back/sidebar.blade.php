@@ -90,6 +90,7 @@
                     </a>
                     <ul id="contact_email" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                         <li><a href="{{ route('admin.contact.index.show') }}"><i class="fa-solid fa-section"></i>Contact Email</a></li>
+                        <li><a href="{{ route('admin.mapaddress.form.show') }}"><i class="fa-solid fa-section"></i>Map Address</a></li>
                     </ul>
                 </li>
                 <li class="iq-menu-title"><i class="ri-subtract-line">

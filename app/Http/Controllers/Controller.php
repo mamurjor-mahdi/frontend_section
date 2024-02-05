@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Support\Facades\File;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Controller extends BaseController
 {
@@ -17,15 +18,16 @@ class Controller extends BaseController
         $product_file->move($folder,$file_image_name);
         return $file_image_name;
     }
-
-    protected function file_update($file,$folder,$old_file){
+    
+    protected function file_update($folder,$file,$old_file){
             if($old_file !=null){
                 file_exists($folder.$old_file) ? unlink($folder.$old_file):false;
-            }
+            };
             $product_file=$file;
             $file_extension=$product_file->getClientOriginalExtension();
             $file_image_name=rand().time().'.'.$file_extension;
             $product_file->move($folder,$file_image_name);
+            File::delete($folder . $old_file);
             return $file_image_name;
     }
 

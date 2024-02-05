@@ -5,11 +5,11 @@
 @endpush
 @section('content')
     <div class="row">
+        @include('backend.alert_message.alert')
         <div class="col-md-12">
             <div class="card-header form-header">
                 <h4 class="card-title">Hire Me</h4>
             </div>
-            @include('backend.alert_message.alert')
             <div class="bg-white px-4 py-3 mb-3 shadow rounded">
                 <form action="{{ route('admin.hireme.updateorCreated') }}" method="POST" enctype="multipart/form-data">
                     @csrf
