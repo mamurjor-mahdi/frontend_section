@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class mapaddressRequest extends FormRequest
+class aboutSectionReqest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,9 +21,15 @@ class mapaddressRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'map_url'        => 'required',
-            'status'         => 'required',
+        $rules= [
+            'title'       => 'required',
+            'description' => 'required',
+            'image'       => 'required|mimes:png,jpg,jpeg|file',
+            'status'      => 'required'
         ];
+        if(request()->image !=null){
+            $rules['image']='required';
+        }
+        return $rules;
     }
 }

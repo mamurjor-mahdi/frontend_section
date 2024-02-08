@@ -26,18 +26,14 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="form-label" class="required">Location Title</label>
+                                <label for="form-label">Location Title</label>
                                 <input class="form-control" type="text" name="location_title" placeholder="location title" value="{{ $data->location_title ?? '' }}">
-                                <div>
-                                    @error('location_title')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
+
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="form-label" class="required">Location Address</label>
+                                <label for="form-label">Location Address</label>
                                 <input class="form-control" type="text" name="address" placeholder="location address" value="{{ $data->address ?? '' }}">
                                 <div>
                                     @error('address')
@@ -48,46 +44,30 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="form-label" class="required">Number Title</label>
+                                <label for="form-label">Number Title</label>
                                 <input class="form-control" type="text" name="number_title" placeholder="number title" value="{{ $data->number_title ?? '' }}">
-                                <div>
-                                    @error('number_title')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
+
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="form-label" class="required">Number</label>
+                                <label for="form-label">Number</label>
                                 <input class="form-control" type="number" name="number" placeholder="number" value="{{ $data->number ?? '' }}">
-                                <div>
-                                    @error('number')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
+
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="form-label" class="required">Email Title</label>
+                                <label for="form-label">Email Title</label>
                                 <input class="form-control" type="text" name="email_title" placeholder="email title" value="{{ $data->email_title ?? '' }}">
-                                <div>
-                                    @error('email_title')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
+
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="form-label" class="required">Email</label>
+                                <label for="form-label">Email</label>
                                 <input class="form-control" type="email" name="email" placeholder="email" value="{{ $data->email ?? '' }}">
-                                <div>
-                                    @error('email')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
+                                
                             </div>
                         </div>
                         <div class="col-md-6">

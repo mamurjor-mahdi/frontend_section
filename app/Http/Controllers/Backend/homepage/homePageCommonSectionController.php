@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Backend\homepage;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\homePageCommonSectionReqest;
 use App\Models\HomePageCommonTitle;
 use Illuminate\Http\Request;
 
-class homePageCommonTitleController extends Controller
+class homePageCommonSectionController extends Controller
 {
     public function FormShow(){
         $breadcrumb = ['Dashboard' => route('admin.dashboard'),'Create'=>''];
@@ -14,7 +15,7 @@ class homePageCommonTitleController extends Controller
         $singlepagetitle=HomePageCommonTitle::where('section_name','single_page_title')->first();
         return view('backend.single-pages.homepage-common-title.form',compact('breadcrumb','singlepagetitle'));
     }
-    public function updateOrCreate(Request $request){
+    public function updateOrCreate(homePageCommonSectionReqest $request){
         $data=[
             'service_sub_title'      => $request->service_sub_title,
             'whychoose_sub_title'    => $request->whychoose_sub_title,

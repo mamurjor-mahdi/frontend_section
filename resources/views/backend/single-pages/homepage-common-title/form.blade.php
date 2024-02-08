@@ -31,13 +31,9 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="form-label" class="required">Sub Title</label>
+                                    <label for="form-label">Sub Title</label>
                                     <input class="form-control" type="text" name="service_sub_title" placeholder="sub title" value="{{ $data->service_sub_title ?? '' }}">
-                                    <div>
-                                        @error('service_sub_title')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
+
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -75,13 +71,9 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="form-label" class="required">Sub Title</label>
+                                    <label for="form-label">Sub Title</label>
                                     <input class="form-control" type="text" name="whychoose_sub_title" placeholder="sub title" value="{{ $data->whychoose_sub_title ?? '' }}">
-                                    <div>
-                                        @error('whychoose_sub_title')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
+
                                 </div>
 
                             </div>
@@ -120,13 +112,9 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="form-label" class="required">Sub Title</label>
+                                    <label for="form-label">Sub Title</label>
                                     <input class="form-control" type="text" name="portfolio_sub_title" placeholder="sub title" value="{{ $data->portfolio_sub_title ?? '' }}">
-                                    <div>
-                                        @error('portfolio_sub_title')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
+
                                 </div>
 
                             </div>
@@ -164,13 +152,9 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="form-label" class="required">Sub Title</label>
+                                    <label for="form-label">Sub Title</label>
                                     <input class="form-control" type="text" name="testmonial_sub_title" placeholder="sub title" value="{{ $data->testmonial_sub_title ?? '' }}">
-                                    <div>
-                                        @error('testmonial_sub_title')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
+
                                 </div>
 
                             </div>
@@ -208,13 +192,9 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="form-label" class="required">Sub Title</label>
+                                    <label for="form-label">Sub Title</label>
                                     <input class="form-control" type="text" name="blogs_sub_title" placeholder="sub title" value="{{ $data->blogs_sub_title ?? '' }}">
-                                    <div>
-                                        @error('blogs_sub_title')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
+
                                 </div>
 
                             </div>
@@ -252,13 +232,9 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="form-label" class="required">Sub Title</label>
+                                    <label for="form-label">Sub Title</label>
                                     <input class="form-control" type="text" name="contact_sub_title" placeholder="sub title" value="{{ $data->contact_sub_title ?? '' }}">
-                                    <div>
-                                        @error('contact_sub_title')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
+
                                 </div>
 
                             </div>

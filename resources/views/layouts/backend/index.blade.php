@@ -9,11 +9,11 @@
       <link rel="shortcut icon" href="{{ asset('backend') }}/images/favicon.ico" />
 
       <!-- datatable cdn -->
-      <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet">
-      <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+      <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
       <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap4.min.css">
       <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
+
       <!-- font-awesome CSS cdn -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
       <!-- Bootstrap CSS -->
@@ -22,6 +22,7 @@
       <link rel="stylesheet" href="{{ asset('backend') }}/css/typography.css">
       <!-- Style CSS -->
       <link rel="stylesheet" href="{{ asset('backend') }}/css/style.css">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet">
       @stack('styles')
       <!-- Responsive CSS -->
       <link rel="stylesheet" href="{{ asset('backend') }}/css/responsive.css">
@@ -118,6 +119,7 @@
       <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
       <script>
          var _token = "{{ csrf_token() }}";
       </script>

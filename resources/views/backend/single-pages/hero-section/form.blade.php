@@ -130,12 +130,8 @@
                                     @enderror
                                 </div>
                                 @isset($data)
-                                    @if ($data->image)
-                                        <img style="width: 60px; height:50px" src="{{ asset('Backend/images/homepages/hero_image/'.$data->image) }}" alt="">
-                                    @else
-                                        <img src="" alt="img">
-                                    @endif
-                                        <input hidden name="image_old" id="image_old" class="form-control" value="{{ asset('Backend/images/homepages/hero_image/'.$data->image) }}">
+                                    <img style="width: 60px; height:50px" src="{{ asset('Backend/images/homepages/hero_image/'.$data->image) }}" alt="">
+                                    <input type="hidden" name="image_old" id="image_id" class="form-control" value="{{ $data->image }}">
                                 @endisset
                             </div>
                         </div>

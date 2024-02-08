@@ -53,6 +53,6 @@ class CategoryController extends Controller
     }
     public function blogCategoryDelete($id){
         Category::find($id)->delete();
-        return redirect()->back()->with('success','category update successfully');
+        return redirect()->back()->with('success','category delete successfully');
     }
 }

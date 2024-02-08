@@ -55,7 +55,7 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                @isset($portfolios)
+                                @isset($data)
                                 <img style="width: 60px; height: 60px;" src="{{ asset('Backend/images/homepages/portfolio_image/'.$data->image) }}" alt="{{ $data->title ?? '' }}">
                                 <input type="hidden" name="image_old" id="image_old" value="{{ asset('Backend/images/homepages/portfolio_image/'.$data->image) }}">
                                 @endisset

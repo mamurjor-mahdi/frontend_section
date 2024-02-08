@@ -4,8 +4,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\homepage\CategoryController;
-use App\Http\Controllers\Backend\homepage\homePageCommonTitleController;
 use App\Http\Controllers\Backend\homepage\HomePagesSectionController;
+use App\Http\Controllers\Backend\homepage\homePageCommonTitleController;
+use App\Http\Controllers\Backend\homepage\homePageCommonSectionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +28,8 @@ Route::prefix('admin')->name('admin.')->middleware('auth','permission')->group(f
 
 //backend common title route
 Route::prefix('admin')->name('admin.')->group(function(){
-    Route::get('pagetitle/formshow', [homePageCommonTitleController::class, 'FormShow'])->name('pagtitle.form.show');
-    Route::post('pagetitle/create', [homePageCommonTitleController::class, 'updateOrCreate'])->name('pagetitle.updateorCreated');
+    Route::get('pagetitle/formshow', [homePageCommonSectionController::class, 'FormShow'])->name('pagtitle.form.show');
+    Route::post('pagetitle/create', [homePageCommonSectionController::class, 'updateOrCreate'])->name('pagetitle.updateorCreated');
 });
 
 //backend hero section route

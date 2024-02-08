@@ -37,13 +37,9 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="form-label" class="required">Sub Title</label>
+                                <label for="form-label">Sub Title</label>
                                 <input class="form-control" type="text" name="sub_title" placeholder="sub title" value="{{ $data->sub_title ?? '' }}">
-                                <div>
-                                    @error('sub_title')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
+                                
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -96,7 +92,7 @@
                                 </div>
                                 @isset($aboutSection)
                                 <img style="width: 60px; height:50px" src="{{ asset('Backend/images/homepages/about_image/'.$data->image) }}" alt="">
-                                <input type="hidden" name="image_old" id="image_old" class="form-control" value="{{ $data->image ?? '' }}">
+                                <input type="hidden" name="image_old" id="image_old" class="form-control" value="{{ $data->image }}">
                                 @endisset
                             </div>
                         </div>

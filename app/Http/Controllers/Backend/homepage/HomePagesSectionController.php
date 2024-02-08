@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Backend\homepage;
-
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\frontendSection;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\aboutSectionReqest;
+use App\Http\Requests\blogSectionReqest;
 use App\Http\Requests\portfolioRequest;
 use App\Http\Requests\mapaddressRequest;
 use App\Http\Requests\testmonialRequest;
@@ -13,6 +14,7 @@ use App\Http\Requests\HeroSectionRequest;
 
 class HomePagesSectionController extends Controller
 {
+
     public function HeroformShow(){
         $breadcrumb = ['Dashboard' => route('admin.dashboard'),'Create'=>''];
         setThisPageTitle('Create');
@@ -20,18 +22,17 @@ class HomePagesSectionController extends Controller
         return view('backend.single-pages.hero-section.form',compact('breadcrumb','heroSection'));
     }
     public function heroUpdateOrCreate(HeroSectionRequest $request){
-        
-        if($request->image !=null){
-            if($request->image_old){
-                $image=$this->file_update('Backend/images/homepages/hero_image',$request->image,$request->image_old);
+            if ($request->image != null) {
+                if ($request->image == true) {
+                    $image = $this->file_update($request->file('image'), 'Backend/images/homepages/hero_image/', $request->image_old);
+                }
+            } else {
+                if ($request->hasFile('image')) {
+                    $image = $this->file_upload('Backend/images/homepages/hero_image/', $request->file('image'));
+                } else {
+                    $image = $request->image_old;
+                }
             }
-        }else{
-            if($request->image){
-                $image=$this->file_upload('Backend/images/homepages/hero_image',$request->image);
-            }else{
-                $image=$request->image_old;
-            }
-        };
 
         $social_share=[];
         foreach($request->social_share as $value){
@@ -128,19 +129,18 @@ class HomePagesSectionController extends Controller
         $aboutSection=frontendSection::where('section_name','about_section')->first();
         return view('backend.single-pages.about-section.form',compact('breadcrumb','aboutSection'));
     }
-    public function aboutUpdateOrCreate(Request $request){
-        if($request->image !=null){
-            if($request->hasFile('image')){
-                $image=$this->file_update($request->image,'Backend/images/homepages/about_image',$request->image_old);
+    public function aboutUpdateOrCreate(aboutSectionReqest $request){
+        if ($request->image != null) {
+            if ($request->image ==true) {
+                $image = $this->file_update($request->file('image'), 'Backend/images/homepages/about_image/', $request->image_old);
             }
-        }else{
-            if($request->hasFile('image')){
-                $image=$this->file_upload('Backend/images/homepages/about_image',$request->image);
-            }else{
-                $image=$request->image_old;
+        } else {
+            if ($request->hasFile('image')) {
+                $image = $this->file_upload('Backend/images/homepages/about_image/', $request->file('image'));
+            } else {
+                $image = $request->image_old;
             }
-
-        };
+        }
         $data=[
             'title'         => $request->title,
             'sub_title'     => $request->sub_title,
@@ -339,7 +339,8 @@ class HomePagesSectionController extends Controller
     }
     public function testmonialDelete($id){
         $testmonials=frontendSection::find($id);
-        $this->file_remove('Backend/images/homepages/testmonial_image/',$testmonials->image_old);
+        $data=json_decode($testmonials->data);
+        $this->file_remove('Backend/images/homepages/testmonial_image/',$data->image_old);
         $testmonials->delete();
         return redirect()->back()->with('success','Delete successfully');
     }
@@ -404,7 +405,8 @@ class HomePagesSectionController extends Controller
     }
     public function portfolioDelete($id){
         $portfolios=frontendSection::find($id);
-        $this->file_remove('Backend/images/homepages/portfolio_image/',$portfolios->image_old);
+        $data=json_decode($portfolios->data);
+        $this->file_remove('Backend/images/homepages/portfolio_image/',$data->image);
         $portfolios->delete();
         return redirect()->back()->with('success','Delete successfully');
     }
@@ -422,7 +424,7 @@ class HomePagesSectionController extends Controller
         $blog=frontendSection::where('section_name','blog_section')->get();
         return view('backend.single-pages.blog-section.form',compact('breadcrumb','blog','categories'));
     }
-    public function blogStore(Request $request){
+    public function blogStore(blogSectionReqest $request){
         if($request->hasFile('image')){
             $image=$this->file_upload('Backend/images/homepages/blog_image',$request->image);
         };
@@ -450,7 +452,7 @@ class HomePagesSectionController extends Controller
         $categories=Category::all();
         return view('backend.single-pages.blog-section.form',compact('breadcrumb','blogs','categories'));
     }
-    public function blogUpdate(Request $request,$id){
+    public function blogUpdate(blogSectionReqest $request,$id){
         $blogs=frontendSection::find($id);
         if($blogs !=null){
             $update_data=json_decode($blogs->data);
@@ -545,7 +547,7 @@ class HomePagesSectionController extends Controller
         return view('backend.single-pages.mapaddress-section.form',compact('breadcrumb','mapaddressSection'));
     }
     public function mapaddressUpdateOrCreate(mapaddressRequest $request){
-        
+
         $data=[
             'location_title' => $request->location_title,
             'address'        => $request->address,
