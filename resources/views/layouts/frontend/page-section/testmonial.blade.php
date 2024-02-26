@@ -1,48 +1,36 @@
+@if (!empty($portfolio_sections))
 <section id="testmonial" class="section">
     <div class="container text-center">
-        <h6 class="subtitle">Testmonial</h6>
-        <h6 class="section-title mb-4">What People Say About Me</h6>
-        <p class="mb-5 pb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. In alias dignissimos. <br> rerum commodi corrupti, temporibus non quam.</p>
-
-
+        <div class="mb-4 pb-2">
+            <h6 class="subtitle">{{ $commontitle->testmonial_sub_title ?? '' }}</h6>
+            <h6 class="section-title mb-4">{{ $commontitle->testmonial_title ?? '' }}</h6>
+            <p>{!! $commontitle->testmonial_description ?? '' !!}</p>
+        </div>
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                @foreach ($testmonial_sections as $index => $testmonial_section)
+                    <li data-target="#carouselExampleIndicators" data-slide-to="{{ $index }}" @if($index == 0) class="active" @endif></li>
+                @endforeach
             </ol>
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="card testmonial-card border">
-                        <div class="card-body">
-                            <img src="{{ asset('/') }}assets/imgs/avatar-1.jpg" alt="">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam nostrum voluptates in enim vel amet?</p>
-                            <h1 class="title">Emma Re</h1>
-                            <h1 class="subtitle">Graphic Designer</h1>
+                @foreach ($testmonial_sections as  $index =>$testmonial_section)
+                    @php
+                        $testmonial=json_decode($testmonial_section->data)
+                    @endphp
+                    <div class="carousel-item @if($index == 0) active @endif">
+                        <div class="card testmonial-card border">
+                            <div class="card-body">
+                                <img src="{{ asset('backend/images/homepages/testmonial_image/'.$testmonial->image) }}" alt="{{ $testmonial->testmonial_name ?? '' }}">
+                                <p>{!! $testmonial->description ?? '' !!}</p>
+                                <h1 class="title">{{ $testmonial->testmonial_name ?? '' }}</h1>
+                                <h1 class="subtitle">{{ $testmonial->designation ?? '' }}</h1>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="card testmonial-card border">
-                        <div class="card-body">
-                            <img src="{{ asset('/') }}assets/imgs/avatar-2.jpg" alt="">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam nostrum voluptates in enim vel amet?</p>
-                            <h1 class="title">James Bert</h1>
-                            <h1 class="subtitle">Web Designer</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="card testmonial-card border">
-                        <div class="card-body">
-                            <img src="{{ asset('/') }}assets/imgs/avatar-3.jpg" alt="">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam nostrum voluptates in enim vel amet?</p>
-                            <h1 class="title">Michael Abra</h1>
-                            <h1 class="subtitle">Web Developer</h1>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+                
             </div>
         </div>
     </div>
 </section>
+@endif

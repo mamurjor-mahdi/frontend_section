@@ -14,6 +14,6 @@ class frontendSection extends Model
         'section_name','data','status'
     ];
     public function category() {
-        $this->belongsTo(Category::class,'category','id');
+        return $this->belongsTo(Category::class);
     }
 }

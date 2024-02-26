@@ -26,15 +26,12 @@
                             <div class="form-group">
                                 <label for="form-label" class="required">Category</label>
                                 <select name="category" id="cetegory" class="form-control">
-                                    <option value="">Selecte Category</option>
-                                    @isset($blogs)
-                                        @php
-                                            $category_data=json_decode($blogs->data)
-                                        @endphp
+                                    <option value="">Selected Category</option>
                                         @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}" {{ $category_data->category == $category->id ? 'selected' : '' }}>{{ $category->category_name }}</option>
+                                            <option value="{{ $category->id }}" @isset($data)
+                                                {{ $data->category == $category->id ? 'selected' : '' }}
+                                            @endisset>{{ $category->category_name }}</option>
                                         @endforeach
-                                    @endisset
 
                                 </select>
                                 <div>

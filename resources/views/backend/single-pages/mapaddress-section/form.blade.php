@@ -26,6 +26,20 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
+                                <label for="form-label">Sub Title</label>
+                                <input class="form-control" type="text" name="subtitle" placeholder="sub title" value="{{ $data->subtitle ?? '' }}">
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="form-label">Title</label>
+                                <input class="form-control" type="text" name="title" placeholder="title" value="{{ $data->title ?? '' }}">
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
                                 <label for="form-label">Location Title</label>
                                 <input class="form-control" type="text" name="location_title" placeholder="location title" value="{{ $data->location_title ?? '' }}">
 
@@ -52,7 +66,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="form-label">Number</label>
-                                <input class="form-control" type="number" name="number" placeholder="number" value="{{ $data->number ?? '' }}">
+                                <input class="form-control" type="text" name="number" placeholder="number" value="{{ $data->number ?? '' }}">
 
                             </div>
                         </div>

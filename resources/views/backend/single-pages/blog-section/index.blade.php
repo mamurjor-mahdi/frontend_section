@@ -30,15 +30,14 @@
                     <tbody>
                     @forelse ($blog as $key=>$value)
                         @php
-                            $data=json_decode($value->data);
-
+                            $datas=json_decode($value->data);
                         @endphp
                             <tr>
                                 <td>{{ $key+1 }}</td>
-                                <td>{{ $data->category }}</td>
-                                <td>{{ $data->title }}</td>
+                                <td>{{ $datas->category }}</td>
+                                <td>{{ $datas->title }}</td>
                                 <td>
-                                    <img style="width: 60px; height: 60px;" src="{{ asset('Backend/images/homepages/blog_image/'.$data->image) }}" alt="{{ $data->title }}">
+                                    <img style="width: 60px; height: 60px;" src="{{ asset('Backend/images/homepages/blog_image/'.$datas->image) }}" alt="{{ $datas->title }}">
                                 </td>
                                 <td>
                                     {!! $value->status== 1 ? '<span class="badge bg-primary">Publish</span>' : '<span class="badge bg-danger">Pending</span>' !!}

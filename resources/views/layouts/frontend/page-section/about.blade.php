@@ -1,16 +1,21 @@
-<section id="about" class="section mt-3">
-    <div class="container mt-5">
-        <div class="row text-center text-md-left">
-            <div class="col-md-3">
-                <img src="{{ asset('/') }}assets/imgs/avatar.jpg" alt="" class="img-thumbnail mb-4">
-            </div>
-            <div class="pl-md-4 col-md-9">
-                <h6 class="title">James Smith</h6>
-                <p class="subtitle">UI/UX Designer</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident, pariatur, aperiam aut autem voluptas odit. Odio ducimus delectus totam sed aliquam sequi praesentium mollitia, illum repudiandae quidem quod, magni magnam.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, eius, nam. Quo praesentium qui temporibus voluptatum, facilis aliquid eligendi fugiat beatae neque inventore non. Laborum repellendus consequatur ullam voluptatum asperiores.</p>
-                <a href="#" class="btn btn-primary rounded mt-3">DOWNLOAD CV</a>
+@if (!empty($about_sections))
+@php
+    $about_section=json_decode($about_sections->data)
+@endphp
+    <section id="about" class="section mt-3">
+        <div class="container mt-5">
+            <div class="row text-center text-md-left">
+                <div class="col-md-3">
+                    <img src="{{ asset('backend/images/homepages/about_image/'.$about_section->image) }}" alt="{{ $about_section->title ?? '' }}" class="img-thumbnail mb-4">
+                </div>
+                <div class="pl-md-4 col-md-9">
+                    <h6 class="title">{{ $about_section->title ?? '' }}</h6>
+                    <p class="subtitle">{{ $about_section->sub_title }}</p>
+                    <p>{!! $about_section->description ?? '' !!}</p>
+                    <a href="{{ $about_section->button_url ?? '' }}" target="{{ $about_section->button_target ?? '' }}" class="btn btn-primary rounded mt-3">{{ $about_section->button_text ?? '' }}</a>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+@endif
+

@@ -14,6 +14,11 @@
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
 
+    @if($commontitle !=null)
+            @php
+                $commontitle=json_decode($commontitle->data)
+            @endphp
+    @endif
     <!-- Page navigation -->
     @include('layouts.frontend.page-section.header')
     <!-- End of page navibation -->

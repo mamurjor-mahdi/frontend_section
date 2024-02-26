@@ -1,13 +1,18 @@
+@if (!empty($mapaddress_sections))
+@php
+   $mapaddress=json_decode($mapaddress_sections->data)
+@endphp
 <section id="contact" class="position-relative section">
     <div class="container text-center">
-        <h6 class="subtitle">Contact</h6>
-        <h6 class="section-title mb-4">Get In Touch With Me</h6>
-        <p class="mb-5 pb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. In alias dignissimos. <br> rerum commodi corrupti, temporibus non quam.</p>
-
+        <div class="mb-4 pb-2">
+            <h6 class="subtitle">{{ $commontitle->contact_sub_title ?? '' }}</h6>
+            <h6 class="section-title mb-4">{{ $commontitle->contact_title ?? '' }}</h6>
+            <p>{!! $commontitle->contact_description ?? '' !!}</p>
+        </div>
         <div class="contact text-left">
             <div class="form">
-                <h6 class="subtitle">Available 24/7</h6>
-                <h6 class="section-title mb-4">Get In Touch</h6>
+                <h6 class="subtitle">{{ $mapaddress->subtitle ?? '' }}</h6>
+                <h6 class="section-title mb-4">{{ $mapaddress->title ?? '' }}</h6>
                 <form action="{{ route('admin.contact.Created') }}" method="post">
                     @csrf
                     <div class="form-group">
@@ -26,28 +31,29 @@
                 <div class="item">
                     <i class="ti-location-pin"></i>
                     <div class="">
-                        <h5>Location</h5>
-                        <p> 12345 Fake ST NoWhere AB Country</p>
+                        <h5>{{ $mapaddress->location_title }}</h5>
+                        <p> {{ $mapaddress->address ?? '' }}</p>
                     </div>
                 </div>
                 <div class="item">
                     <i class="ti-mobile"></i>
                     <div>
-                        <h5>Phone Number</h5>
-                        <p>(123) 456-7890</p>
+                        <h5>{{ $mapaddress->number_title ?? '' }}</h5>
+                        <p>{{ $mapaddress->number ?? '' }}</p>
                     </div>
                 </div>
                 <div class="item">
                     <i class="ti-email"></i>
                     <div class="mb-0">
-                        <h5>Email Address</h5>
-                        <p>info@website.com</p>
+                        <h5>{{ $mapaddress->email_title ?? '' }}</h5>
+                        <p>{{ $mapaddress->email ?? '' }}</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div id="map">
-        <iframe src="https://snazzymaps.com/embed/61257"></iframe>
+        <iframe src="{{ $mapaddress->map_url ?? '' }}"></iframe>
     </div>
 </section>
+@endif

@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\homepage\CategoryController;
 use App\Http\Controllers\Backend\homepage\HomePagesSectionController;
 use App\Http\Controllers\Backend\homepage\homePageCommonTitleController;
 use App\Http\Controllers\Backend\homepage\homePageCommonSectionController;
+use App\Http\Controllers\Backend\homepage\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -120,4 +121,9 @@ Route::prefix('admin')->name('admin.')->group(function(){
 Route::prefix('admin')->name('admin.')->group(function(){
     Route::get('mapaddress/formshow', [HomePagesSectionController::class, 'mapaddressformShow'])->name('mapaddress.form.show');
     Route::post('/mapaddress/create', [HomePagesSectionController::class, 'mapaddressUpdateOrCreate'])->name('mapaddress.updateorCreated');
+});
+//backend setting route
+Route::prefix('admin')->name('admin.')->group(function(){
+    Route::get('setting/create',[SettingController::class,'settingCreate'])->name('setting.create');
+    Route::post('setting/store',[SettingController::class,'settingUpdateOrCreate'])->name('setting.updateOrcreate');
 });

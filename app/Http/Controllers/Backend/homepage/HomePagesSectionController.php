@@ -414,7 +414,7 @@ class HomePagesSectionController extends Controller
     public function blogIndex(){
         $breadcrumb = ['Dashboard' => route('admin.dashboard'),'Table'=>''];
         setThisPageTitle('table');
-        $blog=frontendSection::where('section_name','blog_section')->get();
+        $blog=frontendSection::with('category')->where('section_name','blog_section')->orderBy('id','desc')->get();
         return view('backend.single-pages.blog-section.index',compact('breadcrumb','blog'));
     }
     public function blogCreate(){
@@ -453,9 +453,9 @@ class HomePagesSectionController extends Controller
         return view('backend.single-pages.blog-section.form',compact('breadcrumb','blogs','categories'));
     }
     public function blogUpdate(blogSectionReqest $request,$id){
-        $blogs=frontendSection::find($id);
-        if($blogs !=null){
-            $update_data=json_decode($blogs->data);
+        $blogs_image=frontendSection::find($id);
+        if($blogs_image !=null){
+            $update_data=json_decode($blogs_image->data);
         }
         if($request->hasFile('image')){
             $image=$this->file_update($request->image,'Backend/images/homepages/blog_image/',$update_data->image);
@@ -471,7 +471,7 @@ class HomePagesSectionController extends Controller
             'button_target' => $request->button_target,
             'image'         => $image,
         ];
-        $blogs->update([
+        $blogs_image->update([
             'section_name' => 'blog_section',
             'data'         => json_encode($data),
             'status'       => $request->status
@@ -539,7 +539,7 @@ class HomePagesSectionController extends Controller
         $contactmail->delete();
         return redirect()->back()->with('success','Delete successfully');
     }
-     // hereme-widget--------->
+     // map contact-widget--------->
      public function mapaddressformShow(){
         $breadcrumb = ['Dashboard' => route('admin.dashboard'),'Create'=>''];
         setThisPageTitle('Create');
@@ -549,6 +549,8 @@ class HomePagesSectionController extends Controller
     public function mapaddressUpdateOrCreate(mapaddressRequest $request){
 
         $data=[
+            'subtitle'       => $request->subtitle,
+            'title'          => $request->title,
             'location_title' => $request->location_title,
             'address'        => $request->address,
             'number_title'   => $request->number_title,
