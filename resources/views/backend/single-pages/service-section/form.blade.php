@@ -11,7 +11,7 @@
                 <h4 class="card-title text-center">Service</h4>
             </div>
             <div class="bg-white px-4 py-3 mb-3 shadow-sm rounded">
-                <form action="{{ isset($services) ? route('admin.service.update',$services->id) : route('admin.service.store') }}" method="POST">
+                <form action="{{ isset($services) ? route('app.service.update',$services->id) : route('app.service.store') }}" method="POST">
                     @csrf
                     @isset($services)
                         @method('PATCH')

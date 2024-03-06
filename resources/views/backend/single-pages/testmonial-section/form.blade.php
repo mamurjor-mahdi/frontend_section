@@ -11,7 +11,7 @@
                 <h4 class="card-title text-center">Testmonial</h4>
             </div>
             <div class="bg-white px-4 py-3 mb-3 shadow-sm rounded">
-                <form action="{{ isset($testmonials) ? route('admin.testmonial.update',$testmonials->id) : route('admin.testmonial.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ isset($testmonials) ? route('app.testmonial.update',$testmonials->id) : route('app.testmonial.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @isset($testmonials)
                         @method('PATCH')

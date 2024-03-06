@@ -11,7 +11,7 @@
                 <h4 class="card-title">About</h4>
             </div>
             <div class="bg-white px-4 py-3 mb-3 shadow rounded">
-                <form action="{{ route('admin.about.updateorCreated') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('app.about.updateorCreated') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @isset($aboutSection)
                         <input type="hidden" name="section_name" value="{{ $aboutSection->section_name }}">

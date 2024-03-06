@@ -11,7 +11,7 @@
                 <h4 class="card-title text-center">Counter</h4>
             </div>
             <div class="bg-white px-4 py-3 mb-3 shadow-sm rounded">
-                <form action="{{ isset($counters) ? route('admin.counter.update',$counters->id) : route('admin.counter.store') }}" method="POST">
+                <form action="{{ isset($counters) ? route('app.counter.update',$counters->id) : route('app.counter.store') }}" method="POST">
                     @csrf
                     @isset($counters)
                         @method('PATCH')

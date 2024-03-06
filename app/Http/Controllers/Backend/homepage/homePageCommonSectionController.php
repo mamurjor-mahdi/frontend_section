@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class homePageCommonSectionController extends Controller
 {
     public function FormShow(){
-        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'Create'=>''];
+        $breadcrumb = ['Dashboard' => route('app.dashboard'),'Create'=>''];
         setThisPageTitle('Create');
         $singlepagetitle=HomePageCommonTitle::where('section_name','single_page_title')->first();
         return view('backend.single-pages.homepage-common-title.form',compact('breadcrumb','singlepagetitle'));

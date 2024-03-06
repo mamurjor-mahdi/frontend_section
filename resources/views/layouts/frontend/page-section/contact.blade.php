@@ -13,7 +13,7 @@
             <div class="form">
                 <h6 class="subtitle">{{ $mapaddress->subtitle ?? '' }}</h6>
                 <h6 class="section-title mb-4">{{ $mapaddress->title ?? '' }}</h6>
-                <form action="{{ route('admin.contact.Created') }}" method="post">
+                <form action="{{ route('app.contact.Created') }}" method="post">
                     @csrf
                     <div class="form-group">
                         <input type="email" name="your_email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>

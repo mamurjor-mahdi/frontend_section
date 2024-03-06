@@ -11,7 +11,7 @@
                 <h4 class="card-title text-center">Portfolio</h4>
             </div>
             <div class="bg-white px-4 py-3 mb-3 shadow-sm rounded">
-                <form action="{{ isset($portfolios) ? route('admin.portfolio.update',$portfolios->id) : route('admin.portfolio.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ isset($portfolios) ? route('app.portfolio.update',$portfolios->id) : route('app.portfolio.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @isset($portfolios)
                         @method('PATCH')

@@ -10,7 +10,7 @@
             <div class="card-header form-header">
                 <h4 class="card-title text-center">Common Title</h4>
             </div>
-            <form action="{{ route('admin.pagetitle.updateorCreated') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('app.pagetitle.updateorCreated') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @isset($singlepagetitle)
                     <input hidden name="section_name" value="{{ $singlepagetitle->section_name }}">

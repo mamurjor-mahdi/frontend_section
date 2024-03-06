@@ -10,13 +10,13 @@ use App\Http\Controllers\Controller;
 class CategoryController extends Controller
 {
     public function blogCategoryIndex(){
-        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'Table'=>''];
+        $breadcrumb = ['Dashboard' => route('app.dashboard'),'Table'=>''];
         setThisPageTitle('table');
         $categorys=Category::all();
         return view('backend.single-pages.category.index',compact('breadcrumb','categorys'));
     }
     public function blogCategoryCreate(){
-        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'table'=>route('admin.blog.category.index'),'create'=>''];
+        $breadcrumb = ['Dashboard' => route('app.dashboard'),'table'=>route('app.blog.category.index'),'create'=>''];
         setThisPageTitle('Create');
         return view('backend.single-pages.category.form',compact('breadcrumb'));
     }
@@ -30,10 +30,10 @@ class CategoryController extends Controller
             'slug'          => Str::slug($request->category_name),
             'status'        => $request->status
         ]);
-        return redirect()->route('admin.blog.category.index')->with('success','category create successfully');
+        return redirect()->route('app.blog.category.index')->with('success','category create successfully');
     }
     public function blogCategoryEdit($id){
-        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'table'=>route('admin.blog.category.index'),'Edit'=>''];
+        $breadcrumb = ['Dashboard' => route('app.dashboard'),'table'=>route('app.blog.category.index'),'Edit'=>''];
         setThisPageTitle('Edit');
         $categorys=Category::find($id);
         return view('backend.single-pages.category.form',compact('breadcrumb','categorys'));
@@ -49,7 +49,7 @@ class CategoryController extends Controller
             'slug'          => Str::slug($request->category_name),
             'status'        => $request->status
         ]);
-        return redirect()->route('admin.blog.category.index')->with('success','category update successfully');
+        return redirect()->route('app.blog.category.index')->with('success','category update successfully');
     }
     public function blogCategoryDelete($id){
         Category::find($id)->delete();

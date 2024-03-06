@@ -14,7 +14,7 @@
             <div class="card-header d-flex justify-content-between">
                 <div class="card-title">{{ $title }}</div>
                 <div>
-                    <a href="{{ route('admin.service.create') }}" class="btn btn-lg btn-primary">Add New</a>
+                    <a href="{{ route('app.service.create') }}" class="btn btn-lg btn-primary">Add New</a>
                 </div>
             </div>
             <div class="card-body">
@@ -40,8 +40,8 @@
                                     {!! $value->status== 1 ? '<span class="badge bg-primary">Publish</span>' : '<span class="bg-danger">Pending</span>' !!}
                                 </td>
                                 <td class="d-flex">
-                                    <a href="{{ route('admin.service.edit',$value->id) }}" class="btn btn-sm btn-primary mr-1"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <form action="{{ route('admin.service.delete',$value->id) }}" id="delete-form-{{ $value->id }}" method="post">
+                                    <a href="{{ route('app.service.edit',$value->id) }}" class="btn btn-sm btn-primary mr-1"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <form action="{{ route('app.service.delete',$value->id) }}" id="delete-form-{{ $value->id }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                     </form>

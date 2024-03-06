@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class SettingController extends Controller
 {
     public function settingCreate(){
-        $breadcrumb=['Dashboard'=>route('admin.dashboard'),'Settings'=>''];
+        $breadcrumb=['Dashboard'=>route('app.dashboard'),'Settings'=>''];
         setThisPageTitle('Settings');
         
         return view('backend.single-pages.settings.form',compact('breadcrumb'));
