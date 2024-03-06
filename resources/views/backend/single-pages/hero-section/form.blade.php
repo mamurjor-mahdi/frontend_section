@@ -19,7 +19,7 @@
                 <h4 class="card-title text-center">Hero</h4>
             </div>
             <div class="bg-white p-4 mb-3 shadow rounded">
-                <form action="{{ route('admin.hero.updateOrCreated') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('app.hero.updateOrCreated') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @isset($heroSection)
                         <input hidden name="section_name" value="{{ $heroSection->section_name }}">

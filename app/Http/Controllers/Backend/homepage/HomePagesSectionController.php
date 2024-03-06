@@ -16,7 +16,7 @@ class HomePagesSectionController extends Controller
 {
 
     public function HeroformShow(){
-        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'Create'=>''];
+        $breadcrumb = ['Dashboard' => route('app.dashboard'),'Create'=>''];
         setThisPageTitle('Create');
         $heroSection=frontendSection::where('section_name','hero_section')->first();
         return view('backend.single-pages.hero-section.form',compact('breadcrumb','heroSection'));
@@ -65,13 +65,13 @@ class HomePagesSectionController extends Controller
 
     // Header-widget--------->
     public function counterIndex(){
-        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'Table'=>''];
+        $breadcrumb = ['Dashboard' => route('app.dashboard'),'Table'=>''];
         setThisPageTitle('table');
         $counter=frontendSection::where('section_name','counter_section')->get();
         return view('backend.single-pages.counter-section.index',compact('breadcrumb','counter'));
     }
     public function counterCreate(){
-        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'index'=>route('admin.counter.index'),'Create'=>''];
+        $breadcrumb = ['Dashboard' => route('app.dashboard'),'index'=>route('app.counter.index'),'Create'=>''];
         setThisPageTitle('Create');
         $counter=frontendSection::where('section_name','counter_section')->get();
         return view('backend.single-pages.counter-section.form',compact('breadcrumb','counter'));
@@ -91,10 +91,10 @@ class HomePagesSectionController extends Controller
             'data'         => json_encode($data),
             'status'       => $request->status
         ]);
-        return redirect()->route('admin.counter.index')->with('success','Create Successfully');
+        return redirect()->route('app.counter.index')->with('success','Create Successfully');
     }
     public function counterEdit($id){
-        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'index'=>route('admin.counter.index'),'edit'=>'' ];
+        $breadcrumb = ['Dashboard' => route('app.dashboard'),'index'=>route('app.counter.index'),'edit'=>'' ];
         setThisPageTitle('edit');
         $counters=frontendSection::find($id);
         return view('backend.single-pages.counter-section.form',compact('breadcrumb','counters'));
@@ -115,7 +115,7 @@ class HomePagesSectionController extends Controller
             'data'         => json_encode($data),
             'status'       => $request->status
         ]);
-        return redirect(route('admin.counter.index'))->with('success','Create Successfully');
+        return redirect(route('app.counter.index'))->with('success','Create Successfully');
     }
     public function counterDelete($id){
         $counters=frontendSection::find($id);
@@ -124,7 +124,7 @@ class HomePagesSectionController extends Controller
     }
     // about-widget--------->
     public function aboutformShow(){
-        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'Create'=>''];
+        $breadcrumb = ['Dashboard' => route('app.dashboard'),'Create'=>''];
         setThisPageTitle('Create');
         $aboutSection=frontendSection::where('section_name','about_section')->first();
         return view('backend.single-pages.about-section.form',compact('breadcrumb','aboutSection'));
@@ -159,13 +159,13 @@ class HomePagesSectionController extends Controller
     }
     //service --------------->
     public function serviceIndex(){
-        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'Table'=>''];
+        $breadcrumb = ['Dashboard' => route('app.dashboard'),'Table'=>''];
         setThisPageTitle('table');
         $service=frontendSection::where('section_name','service_section')->get();
         return view('backend.single-pages.service-section.index',compact('breadcrumb','service'));
     }
     public function serviceCreate(){
-        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'index'=>route('admin.service.index'),'Create'=>''];
+        $breadcrumb = ['Dashboard' => route('app.dashboard'),'index'=>route('app.service.index'),'Create'=>''];
         setThisPageTitle('Create');
         $service=frontendSection::where('section_name','service_section')->get();
         return view('backend.single-pages.service-section.form',compact('breadcrumb','service'));
@@ -185,10 +185,10 @@ class HomePagesSectionController extends Controller
             'data'         => json_encode($data),
             'status'       => $request->status
         ]);
-        return redirect(route('admin.service.index'))->with('success','Create Successfully');
+        return redirect(route('app.service.index'))->with('success','Create Successfully');
     }
     public function serviceEdit($id){
-        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'index'=>route('admin.service.index'),'edit'=>'' ];
+        $breadcrumb = ['Dashboard' => route('app.dashboard'),'index'=>route('app.service.index'),'edit'=>'' ];
         setThisPageTitle('edit');
         $services=frontendSection::find($id);
         return view('backend.single-pages.service-section.form',compact('breadcrumb','services'));
@@ -209,7 +209,7 @@ class HomePagesSectionController extends Controller
             'data'         => json_encode($data),
             'status'       => $request->status
         ]);
-        return redirect(route('admin.service.index'))->with('success','Create Successfully');
+        return redirect(route('app.service.index'))->with('success','Create Successfully');
     }
     public function serviceDelete($id){
         $services=frontendSection::find($id);
@@ -219,13 +219,13 @@ class HomePagesSectionController extends Controller
 
     //choose=-------------->
     public function chooseIndex(){
-        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'Table'=>''];
+        $breadcrumb = ['Dashboard' => route('app.dashboard'),'Table'=>''];
         setThisPageTitle('table');
         $choose=frontendSection::where('section_name','choose_section')->get();
         return view('backend.single-pages.choose-section.index',compact('breadcrumb','choose'));
     }
     public function chooseCreate(){
-        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'index'=>route('admin.choose.index'),'Create'=>''];
+        $breadcrumb = ['Dashboard' => route('app.dashboard'),'index'=>route('app.choose.index'),'Create'=>''];
         setThisPageTitle('Create');
         $choose=frontendSection::where('section_name','choose_section')->get();
         return view('backend.single-pages.choose-section.form',compact('breadcrumb','choose'));
@@ -245,10 +245,10 @@ class HomePagesSectionController extends Controller
             'data'         => json_encode($data),
             'status'       => $request->status
         ]);
-        return redirect(route('admin.choose.index'))->with('success','Create Successfully');
+        return redirect(route('app.choose.index'))->with('success','Create Successfully');
     }
     public function chooseEdit($id){
-        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'index'=>route('admin.choose.index'),'edit'=>'' ];
+        $breadcrumb = ['Dashboard' => route('app.dashboard'),'index'=>route('app.choose.index'),'edit'=>'' ];
         setThisPageTitle('edit');
         $chooses=frontendSection::find($id);
         return view('backend.single-pages.choose-section.form',compact('breadcrumb','chooses'));
@@ -269,7 +269,7 @@ class HomePagesSectionController extends Controller
             'data'         => json_encode($data),
             'status'       => $request->status
         ]);
-        return redirect(route('admin.choose.index'))->with('success','Create Successfully');
+        return redirect(route('app.choose.index'))->with('success','Create Successfully');
     }
     public function chooseDelete($id){
         $chooses=frontendSection::find($id);
@@ -279,13 +279,13 @@ class HomePagesSectionController extends Controller
 
     //Testmonial=-------------->
     public function testmonialIndex(){
-        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'Table'=>''];
+        $breadcrumb = ['Dashboard' => route('app.dashboard'),'Table'=>''];
         setThisPageTitle('table');
         $testmonial=frontendSection::where('section_name','testmonial_section')->get();
         return view('backend.single-pages.testmonial-section.index',compact('breadcrumb','testmonial'));
     }
     public function testmonialCreate(){
-        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'index'=>route('admin.testmonial.index'),'Create'=>''];
+        $breadcrumb = ['Dashboard' => route('app.dashboard'),'index'=>route('app.testmonial.index'),'Create'=>''];
         setThisPageTitle('Create');
         $testmonial=frontendSection::where('section_name','testmonial_section')->get();
         return view('backend.single-pages.testmonial-section.form',compact('breadcrumb','testmonial'));
@@ -306,10 +306,10 @@ class HomePagesSectionController extends Controller
             'data'         => json_encode($data),
             'status'       => $request->status
         ]);
-        return redirect(route('admin.testmonial.index'))->with('success','Create Successfully');
+        return redirect(route('app.testmonial.index'))->with('success','Create Successfully');
     }
     public function testmonialEdit($id){
-        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'index'=>route('admin.testmonial.index'),'edit'=>'' ];
+        $breadcrumb = ['Dashboard' => route('app.dashboard'),'index'=>route('app.testmonial.index'),'edit'=>'' ];
         setThisPageTitle('edit');
         $testmonials=frontendSection::find($id);
         return view('backend.single-pages.testmonial-section.form',compact('breadcrumb','testmonials'));
@@ -335,7 +335,7 @@ class HomePagesSectionController extends Controller
             'data'         => json_encode($data),
             'status'       => $request->status
         ]);
-        return redirect(route('admin.testmonial.index'))->with('success','Create Successfully');
+        return redirect(route('app.testmonial.index'))->with('success','Create Successfully');
     }
     public function testmonialDelete($id){
         $testmonials=frontendSection::find($id);
@@ -347,13 +347,13 @@ class HomePagesSectionController extends Controller
 
     //portfolio=-------------->
     public function portfolioIndex(){
-        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'Table'=>''];
+        $breadcrumb = ['Dashboard' => route('app.dashboard'),'Table'=>''];
         setThisPageTitle('table');
         $portfolio=frontendSection::where('section_name','portfolio_section')->get();
         return view('backend.single-pages.portfolio-section.index',compact('breadcrumb','portfolio'));
     }
     public function portfolioCreate(){
-        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'index'=>route('admin.portfolio.index'),'Create'=>''];
+        $breadcrumb = ['Dashboard' => route('app.dashboard'),'index'=>route('app.portfolio.index'),'Create'=>''];
         setThisPageTitle('Create');
         $portfolio=frontendSection::where('section_name','portfolio_section')->get();
         return view('backend.single-pages.portfolio-section.form',compact('breadcrumb','portfolio'));
@@ -373,10 +373,10 @@ class HomePagesSectionController extends Controller
             'data'         => json_encode($data),
             'status'       => $request->status
         ]);
-        return redirect(route('admin.portfolio.index'))->with('success','Create Successfully');
+        return redirect(route('app.portfolio.index'))->with('success','Create Successfully');
     }
     public function portfolioEdit($id){
-        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'index'=>route('admin.portfolio.index'),'edit'=>'' ];
+        $breadcrumb = ['Dashboard' => route('app.dashboard'),'index'=>route('app.portfolio.index'),'edit'=>'' ];
         setThisPageTitle('edit');
         $portfolios=frontendSection::find($id);
         return view('backend.single-pages.portfolio-section.form',compact('breadcrumb','portfolios'));
@@ -401,7 +401,7 @@ class HomePagesSectionController extends Controller
             'data'         => json_encode($data),
             'status'       => $request->status
         ]);
-        return redirect(route('admin.portfolio.index'))->with('success','Create Successfully');
+        return redirect(route('app.portfolio.index'))->with('success','Create Successfully');
     }
     public function portfolioDelete($id){
         $portfolios=frontendSection::find($id);
@@ -412,14 +412,14 @@ class HomePagesSectionController extends Controller
     }
     //Blogs=-------------->
     public function blogIndex(){
-        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'Table'=>''];
+        $breadcrumb = ['Dashboard' => route('app.dashboard'),'Table'=>''];
         setThisPageTitle('table');
         $blog=frontendSection::with('category')->where('section_name','blog_section')->orderBy('id','desc')->get();
         return view('backend.single-pages.blog-section.index',compact('breadcrumb','blog'));
     }
     public function blogCreate(){
         $categories=Category::all();
-        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'index'=>route('admin.blog.index'),'Create'=>''];
+        $breadcrumb = ['Dashboard' => route('app.dashboard'),'index'=>route('app.blog.index'),'Create'=>''];
         setThisPageTitle('Create');
         $blog=frontendSection::where('section_name','blog_section')->get();
         return view('backend.single-pages.blog-section.form',compact('breadcrumb','blog','categories'));
@@ -443,10 +443,10 @@ class HomePagesSectionController extends Controller
             'data'         => json_encode($data),
             'status'       => $request->status
         ]);
-        return redirect(route('admin.blog.index'))->with('success','Create Successfully');
+        return redirect(route('app.blog.index'))->with('success','Create Successfully');
     }
     public function blogEdit($id){
-        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'index'=>route('admin.blog.index'),'edit'=>'' ];
+        $breadcrumb = ['Dashboard' => route('app.dashboard'),'index'=>route('app.blog.index'),'edit'=>'' ];
         setThisPageTitle('edit');
         $blogs=frontendSection::find($id);
         $categories=Category::all();
@@ -476,7 +476,7 @@ class HomePagesSectionController extends Controller
             'data'         => json_encode($data),
             'status'       => $request->status
         ]);
-        return redirect(route('admin.blog.index'))->with('success','Create Successfully');
+        return redirect(route('app.blog.index'))->with('success','Create Successfully');
     }
     public function blogDelete($id){
         $blogs=frontendSection::find($id);
@@ -489,7 +489,7 @@ class HomePagesSectionController extends Controller
     }
     // hereme-widget--------->
     public function hiremeformShow(){
-        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'Create'=>''];
+        $breadcrumb = ['Dashboard' => route('app.dashboard'),'Create'=>''];
         setThisPageTitle('Create');
         $hiremeSection=frontendSection::where('section_name','hireme_section')->first();
         return view('backend.single-pages.hireme-section.form',compact('breadcrumb','hiremeSection'));
@@ -516,7 +516,7 @@ class HomePagesSectionController extends Controller
     }
     //contact form create
     public function contactIndex(){
-        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'index'=>''];
+        $breadcrumb = ['Dashboard' => route('app.dashboard'),'index'=>''];
         setThisPageTitle('Index');
         $contactmail=frontendSection::where('section_name','contact_form')->get();
         return view('backend.single-pages.contact-form.index',compact('breadcrumb','contactmail'));
@@ -541,7 +541,7 @@ class HomePagesSectionController extends Controller
     }
      // map contact-widget--------->
      public function mapaddressformShow(){
-        $breadcrumb = ['Dashboard' => route('admin.dashboard'),'Create'=>''];
+        $breadcrumb = ['Dashboard' => route('app.dashboard'),'Create'=>''];
         setThisPageTitle('Create');
         $mapaddressSection=frontendSection::where('section_name','mapaddress_section')->first();
         return view('backend.single-pages.mapaddress-section.form',compact('breadcrumb','mapaddressSection'));

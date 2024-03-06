@@ -11,7 +11,7 @@
                 <h4 class="card-title text-center">Category</h4>
             </div>
             <div class="bg-white px-4 py-3 mb-3 shadow-sm rounded">
-                <form action="{{ isset($categorys) ? route('admin.blog.category.update',$categorys->id) : route('admin.blog.category.store') }}" method="POST">
+                <form action="{{ isset($categorys) ? route('app.blog.category.update',$categorys->id) : route('app.blog.category.store') }}" method="POST">
                     @csrf
                     @isset($categorys)
                     @method('PATCH')

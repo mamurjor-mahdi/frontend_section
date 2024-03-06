@@ -11,7 +11,7 @@
                 <h4 class="card-title">Hire Me</h4>
             </div>
             <div class="bg-white px-4 py-3 mb-3 shadow rounded">
-                <form action="{{ route('admin.hireme.updateorCreated') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('app.hireme.updateorCreated') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @isset($hiremeSection)
                         <input type="hidden" name="section_name" value="{{ $hiremeSection->section_name }}">

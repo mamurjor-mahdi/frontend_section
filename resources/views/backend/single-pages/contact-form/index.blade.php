@@ -31,7 +31,7 @@
                                 <td>{{ $data->your_email }}</td>
                                 
                                 <td class="d-flex">
-                                    <form action="{{ route('admin.contact.delete',$value->id) }}" id="delete-form-{{ $value->id }}" method="post">
+                                    <form action="{{ route('app.contact.delete',$value->id) }}" id="delete-form-{{ $value->id }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                     </form>

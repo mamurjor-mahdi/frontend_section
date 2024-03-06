@@ -14,7 +14,7 @@
             <div class="card-header d-flex justify-content-between">
                 <div class="card-title">{{ $title }}</div>
                 <div>
-                    <a href="{{ route('admin.blog.category.create') }}" class="btn btn-lg btn-primary">Add New</a>
+                    <a href="{{ route('app.blog.category.create') }}" class="btn btn-lg btn-primary">Add New</a>
                 </div>
             </div>
             <div class="card-body">
@@ -36,8 +36,8 @@
                                     {!! $value->status== 1 ? '<span class="badge bg-primary">Publish</span>' : '<span class="badge bg-danger">Pending</span>' !!}
                                 </td>
                                 <td class="d-flex">
-                                    <a href="{{ route('admin.blog.category.edit',$value->id) }}" class="btn btn-sm btn-primary mr-1"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <form action="{{ route('admin.blog.category.delete',$value->id) }}" id="delete-form-{{ $value->id }}" method="post" enctype="multipart/form-value">
+                                    <a href="{{ route('app.blog.category.edit',$value->id) }}" class="btn btn-sm btn-primary mr-1"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <form action="{{ route('app.blog.category.delete',$value->id) }}" id="delete-form-{{ $value->id }}" method="post" enctype="multipart/form-value">
                                         @csrf
                                         @method('DELETE')
                                     </form>

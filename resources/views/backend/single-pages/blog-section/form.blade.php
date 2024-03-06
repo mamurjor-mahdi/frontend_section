@@ -11,7 +11,7 @@
                 <h4 class="card-title text-center">Blog</h4>
             </div>
             <div class="bg-white px-4 py-3 mb-3 shadow-sm rounded">
-                <form action="{{ isset($blogs) ? route('admin.blog.update',$blogs->id) : route('admin.blog.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ isset($blogs) ? route('app.blog.update',$blogs->id) : route('app.blog.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @isset($blogs)
                         @method('PATCH')

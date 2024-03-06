@@ -11,7 +11,7 @@
                 <h4 class="card-title">Map Address</h4>
             </div>
             <div class="bg-white px-4 py-3 mb-3 shadow rounded">
-                <form action="{{ route('admin.mapaddress.updateorCreated') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('app.mapaddress.updateorCreated') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @isset($mapaddressSection)
                         <input type="hidden" name="section_name" value="{{ $mapaddressSection->section_name }}">

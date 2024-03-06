@@ -9,20 +9,14 @@ use App\Http\Controllers\Controller;
 class SettingController extends Controller
 {
     public function settingCreate(){
-        $breadcrumb=['Dashboard'=>route('admin.dashboard'),'Create'=>''];
-        setThisPageTitle('create');
-        $settings=Setting::first();
-        return view('backend.single-pages.settings.form',compact('breadcrumb','settings'));
+        $breadcrumb=['Dashboard'=>route('app.dashboard'),'Settings'=>''];
+        setThisPageTitle('Settings');
+        
+        return view('backend.single-pages.settings.form',compact('breadcrumb'));
     }
     public function settingUpdateOrCreate(Request $request){
-        $request->validate([
-            'key_name'    => 'required',
-            'value'       => 'required',
-        ]);
-        Setting::updateOrCreate(
-            ['key_name' => $request->key_name],
-            ['value' => $request->value]
-        );
+        Setting::updateOrCreate(['key' => 'footer_copyright'],['key'=>'footer_copyright','values' => $request->footer_copyright]);
+
         return redirect()->back()->with('success','Setting Updated Successfully');
     }
     
