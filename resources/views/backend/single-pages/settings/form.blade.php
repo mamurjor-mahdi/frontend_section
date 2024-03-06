@@ -17,22 +17,13 @@
                         <input type="hidden" name="update_id" value="{{ $settings->id ?? ''  }}">
                     @endisset
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="form-label" class="required">Key</label>
-                                <input class="form-control" type="text" name="key_name" placeholder="key" value="{{ $settings->key_name ?? '' }}">
-                                <div>
-                                    @error('key_name')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-
+                        <div class="col-md-3">
+                            <h5>Footer</h5>
+                            <p class="mb-0 text-muted text-mark">Footer copyright text</p>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-9">
                             <div class="form-group">
-                                <label for="form-label" class="required">Value</label>
-                                <input class="form-control" type="text" name="value" placeholder="value" value="{{ $settings->value ?? '' }}">
+                                <textarea class="form-control" name="footer_copyright" placeholder="Footer Copyright" >{{ config('settings.footer_copyright') ?? '' }}</textarea>
                                 <div>
                                     @error('value')
                                         <span class="text-danger">{{ $message }}</span>

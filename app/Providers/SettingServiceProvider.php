@@ -16,11 +16,11 @@ class SettingServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind('settings', function(){
-            return new Setting();
-        });
-        $loader = AliasLoader::getInstance();
-        $loader->alias('Setting',Setting::class);
+        // $this->app->bind('settings', function(){
+        //     return new Setting();
+        // });
+        // $loader = AliasLoader::getInstance();
+        // $loader->alias('Setting',Setting::class);
     }
 
     /**
@@ -31,7 +31,7 @@ class SettingServiceProvider extends ServiceProvider
         if(!App::runningInConsole() && count(Schema::getColumnListing('settings'))){
             $settings = Setting::all();
             foreach ($settings as $setting) {
-                Config::set('settings.'.$setting->key_name,$setting->value);
+                Config::set('settings.'.$setting->key,$setting->values);
             };
         };
     }
